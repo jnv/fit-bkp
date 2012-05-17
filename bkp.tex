@@ -50,6 +50,9 @@
 \keywordsCS{ruby, redmine, chiliproject, tdd, rails}
 \keywordsEN{ruby, redmine, chiliproject, tdd, rails}
 
+\renewcommand\lstlistingname{Ukázka kódu}
+\renewcommand\lstlistlistingname{Ukázky kódu}
+
 \widowpenalty=500
 \clubpenalty=500
 
@@ -219,8 +222,8 @@ uživatelů -- Redmine standardně podporuje \gls{LDAP}.
 
 Podstatnou vlastností Redmine je i rozšiřitelnost a existence komunity
 uživatelů i vývojářů, kteří udržují obrovský systém rozšíření. Redmine
-je aktivně vyvíjený od roku 2006 čili lze do jisté míry říct, že se
-jedná o~časem prověřený software.
+je aktivně vyvíjený od roku 2006 čili lze říci, že se jedná o software
+do jisté míry prověřený časem.
 
 \section{Požadavky}
 
@@ -245,7 +248,7 @@ Požadované vlastnosti jsou tyto:
 Výsledný systém by měl tyto požadavky splňovat, případně by měl nabízet
 adekvátní alternativu nebo by chybějící funkce mělo být možné doplnit.
 
-Redmine sice tyto funkce splňuje, některé z~nich mají však určité
+Redmine v zásadě tyto funkce splňuje, některé z~nich mají však určité
 nedostatky.
 
 Největší problém je \uv{globálnost} -- role a skupiny může definovat
@@ -259,8 +262,8 @@ v~rámci svých projektů.
 
 Dalším problémem je viditelnost konkrétních stránek wiki a úkolů. Dejme
 tomu že v~rámci jednoho projektu vidí všichni jeho členové všechny
-projekty -- všichni jsou si v~tomto ohledu rovni. Protože však někteří
-členové jsou si rovnější, mohou řešit například bezpečnostní problémy,
+úkoly -- všichni jsou si v~tomto ohledu rovni. Někteří
+členové však mohou řešit třebas bezpečnostní problémy,
 které by měly být viditelné pouze pro úzkou skupinu uživatelů. Redmine
 umožňuje tyto \uv{soukromé záležitosti} řešit pomocí podprojektů --
 vytvoří se podprojekt, který bude přístupný pouze vybraným uživatelům.
@@ -300,7 +303,7 @@ další funkce je nutné použít externí aplikace. Řada takových nástrojů 
 unikátní vlastnosti a jejich kombinací lze dosáhnout zajímavých
 možností. Nevýhodou je pak samozřejmě roztříštěnost konfigurace a
 rozhraní, z~čehož vyplývá náročnější správa a vyšší nároky na uživatele.
-V~řadě případů je proto lepší mít jednodušší nástroje, za to dostupné
+V~řadě případů je proto lepší mít jednodušší nástroje, zato dostupné
 v~rámci jediného systému.
 
 Pro zúžení výběru jsem stanovil základní kritéria, která každá
@@ -337,7 +340,7 @@ napsaný v~Pythonu (kompatibilní s~řadou 2.x).
 
 Trac je velice podobný Redmine, zakládá si na menším počtu komponent a
 jejich silnější provázanosti. Důraz je kladený především na wiki, jejíž
-vlastnosti prostupují celým systémem -- především možnost snadno
+vlastnosti prostupují celým systémem -- zejména možnost snadno
 odkazovat na konkrétní informace v~systému prostřednictvím wiki syntax.
 
 Zajímavý je i systém oprávnění, který nerozlišuje mezi skupinami
@@ -350,7 +353,7 @@ které odkazy se vztahují ke které komponentě, zda vedou na stránku wiki,
 na úkol, nebo třeba na stránku milníku. Tento problém však lze řešit
 pomocí alternativních vzhledů a pokročilejší konfigurace.
 
-Nejzásadnější nedostatek systému Trac je nemožnost provozovat více
+Nejzásadnější nedostatek systému Trac představuje nemožnost provozovat více
 projektů nad stejnou databází. Systém umožňuje poměrně jednoduše
 nakonfigurovat nové instance které sdílí zdrojový kód i uživatele,
 projekty jsou však vzájemně izolované a není možné se jednoduše např.
@@ -371,7 +374,7 @@ představuje repozitář kódu s~vlastní wiki a úkoly. Mimo to má projekt
 k~dispozici i \emph{wall} (nástěnku), kam je možné přidávat soubory, a také
 \emph{merge requests} což je užitečná funkce pro revidování nového kódu.
 
-Projekty není možné (potažmo repozitáře) není možné nijak organizovat,
+Projekty (potažmo repozitáře) není možné nijak organizovat,
 systém oprávnění je příliš jednoduchý a issue tracker velice
 minimalistický. Je to však záměrná inspirace GitHubem, který si na
 maximální jednoduchosti nástrojů zakládá \citep[snímky
@@ -398,8 +401,8 @@ Po funkční stránce je systém srovnatelný s~Redmine. Navíc je možné
 podrobně definovat uživatelské role na úrovni jednotlivých projektů.
 
 Velké množství funkcí však často vede k~horší přehlednosti, i přesto, že
-se The Bug Genie je -- dle oficiální prezentace -- krásný a
-(uživatelsky) přívětivý, z~praktických zkušeností s~ním měli problém i
+The Bug Genie je -- dle oficiální prezentace -- krásný a
+(uživatelsky) přívětivý, z~praktických zkušeností je mi známo, že s~ním měli problém i
 zkušenější uživatelé. Některé problémy s~použitelností by šlo vyřešit
 zjednodušením kategorizace úkolů, odstraněním přebytečných funkcí a
 vylepšením vzhledu, případně zaškolením uživatelů.
@@ -452,7 +455,7 @@ Jestli v~něčem Open Atrium skutečně vyniká, tak je to
 konfigurovatelnost. Většinu vlastností systému je možné nastavit
 z~webového rozhraní -- i mé dosavadní zkušenosti se systémem Drupal
 nasvědčují tomu, že krédem vývojářů na této platformě je zřejmě
-\uv{configuration over convention}. Síla Drupalu je však i největší
+\uv{configuration over convention}. Síla Drupalu tvoří současně i největší
 slabinou systému Open Atrium -- každá pokročilejší úprava obnáší jistý
 risk, že se něco rozbije. Konfigurace je však uložená v~databázi, tím
 pádem je obtížné sledovat změny a systém se obtížně testuje.
@@ -478,7 +481,7 @@ I~přes to, že se nejedná o~zcela novou aplikaci (historie sahá do roku
 jakási koncepce projektů a komponent, avšak kromě jejich administrace se
 nezdá, že by s~nimi bylo možné dělat cokoliv jiného -- wiki a issue
 tracker sdílejí jediný prostor. Sympatická je správa repozitáře kódu,
-narozdíl od systému Trac je možné přidávat nové repozitáře přes webové
+na rozdíl od systému Trac je možné přidávat nové repozitáře přes webové
 rozhraní a výchozí instalace podporuje, kromě Subversion, také Git a
 Mercurial. Wiki je také uložená v~repozitáři, což lze využít k~přímé
 editaci dokumentů bez potřeby webového rozhraní -- podobně řešenou wiki
@@ -500,8 +503,8 @@ byly nesystematičnost a uzavřenost vývoje. ChiliProject se proto snaží
 být otevřenější (z~hlediska přístupnosti přispěvatelům) a stabilnější
 alternativou k~Redmine.
 
-Ačkoli na první pohled vypadá ChiliProject jinak, jedná se skutečně
-o~kosmetické rozdíly. Po funkční stránce jsou systémy srovnatelné -- občas
+Ačkoli na první pohled vypadá ChiliProject odlišně, jedná se skutečně
+o~pouhé kosmetické rozdíly. Po funkční stránce jsou systémy srovnatelné -- občas
 si koneckonců i vyměňují kód. ChiliProject existuje teprve přes jeden
 rok, což je v~případě zavedeného a rozsáhlého projektu krátká doba pro
 vznik zásadních změn. Je však zřejmé že oba projekty směřují jiným
@@ -519,7 +522,7 @@ oproti Redmine má z~hlediska webové aplikace velice specifické chování a
 strmější křivku učení. Další nevýhodou je použitá platforma -- pominu-li
 syntaktické a ideové rozdíly PHP a Ruby (což je spíše otázkou osobní
 preference), PHP nenabízí srovnatelnou dynamiku, které se věnuji
-v~následující kapitole (\ref{sec:analyza_navrh}). V~neposlední řadě je
+v~následující kapitole. V~neposlední řadě je
 rozdíl v~použitých knihovnách -- Redmine je postavený na Ruby on Rails,
 což je časem prověřený a dobře zdokumentovaný framework. The Bug Genie
 má vlastní framework kde prakticky jediným zdrojem informací je
@@ -528,12 +531,13 @@ oficiální dokumentace.
 Rozhodl jsem však pro přechod na systém ChiliProject. Struktura databáze
 je u~obou systémů -- až na změny v~nejnovějších verzích -- stejná,
 migrace z~Redmine tak nepředstavuje žádný problém. Jak jsem již zmínil,
-rozdíly mezi oběma systémy jsou zatím spíše filozofické, ačkoli
+oba systémy se od sebe liší hlavně svým směřováním, ačkoli
 ChiliProjectu chybí jedna z~požadovaných funkcí
-(\ref{sec:private_issues_exist}). ChiliProject má jasně definovaný plán
-vydávání nových verzí -- \emph{minor} verze, která je zpětně kompatibilní,
-vychází každý měsíc. \emph{Major} verze která může obsahovat větší změny
-vychází každý půlrok. V~případě potřeby vyjde \emph{patch} verze.
+(\ref{sec:private_issues_exist}). Nové verze Redmine vychází
+\uv{až když jsou hotové.} ChiliProject má pevně vymezený časový rámec
+-- \emph{minor} verze, která je zpětně kompatibilní,
+vychází každý měsíc. \emph{Major} verze která může zahrnovat rozsáhlejší změny
+vychází každý půlrok. V~případě potřeby vyjde \emph{patch} verze (například je nalezena chyba v zabezpečení).
 Pravidelné vydávání nových verzí zajišťuje, že se hotové funkce dostanou
 k~uživatelům co nejdříve, vývojáři zase mají jasně vymezený časový
 rámec, ve kterém mohou pracovat. Je to podobný, byť zjednodušený, model
@@ -570,7 +574,7 @@ Emacs \citep{Matsumoto2012}.
 
 V~oblasti současných dynamických programovacích jazyků je Ruby do jisté
 míry extrémem. Prakticky jakoukoliv vlastnost programu je možné zkoumat
-a měnit za běhu, se všemi pozitivy a negativy která z~toho vyplývají.
+a měnit \uv{za běhu}, se všemi pozitivy a negativy která z~toho vyplývají.
 Zpravidla to bývá využíváno k~metaprogramování \citep[3c]{why2008}.
 Framework Rails využívá metaprogramování mj. v~podobě maker, která se
 hojně využívají u~modelů např. pro validaci atributů a definici
@@ -580,11 +584,11 @@ S~dynamičností Ruby souvisí i otevřenost tříd a možnost redefinice
 metod, tzv. monkey patching \citep[str. 293]{Olsen2011}. Každá třída
 může být opět otevřená a doplněná o~další metody, případně existující
 metody mohou být zcela nahrazeny. Metody mohou být přidávány a měněny
-také vložením modulů (v~tomto kontextu nazývanými mixins); Ruby tímto
+také vložením modulů (v~tomto kontextu nazvaných mixins); Ruby tímto
 nahrazuje vícenásobnou dědičnost (multiple inheritance). Moduly však
 mohou být do třídy vloženy i zvenčí.
 
-Pro představu přijde vhod ukázka. Mějme definovanou třídu Example
+Pro představu uvedu ukázku. Mějme definovanou třídu Example
 s~metodou hello:
 
 \begin{lstlisting}
@@ -610,8 +614,8 @@ Původní třídu rozšíříme o~tento modul:
 >> Example.send :include, ExamplePatch
 >> puts Example.new.greeting #=> "Odelay!"
 \end{lstlisting}
-Pro redefinici existujících metod z~modulu je vhodné použít makro
-\lstinline!alias_method_chain! které je však součástí knihovny
+Pro redefinici existujících metod z~modulu je vhodné použít makro \\
+\lstinline!alias_method_chain! z knihovny
 ActiveSupport (která je součástí Rails).
 
 \begin{lstlisting}
@@ -634,9 +638,9 @@ Toto makro zaručí, že interpret najde upravenou metodu a současně umožní
 zavolat původní metodu. Několik modulů tak může přepsat tutéž metodu a
 volání zřetězit.
 
-Tyto vlastnosti Ruby dávají rozšířením mnoho možností jak pozměnit jádro
+Popsané vlastnosti Ruby dávají rozšířením mnoho možností jak pozměnit jádro
 aplikace bez potřeby zásahu do originálního kódu. Díky tomu je možné
-vůbec uvažovat nad implementací úprav v~rámci rozšíření bez potřeby
+vůbec uvažovat o implementaci úprav v~rámci rozšíření bez potřeby
 odštěpení od originální aplikace.
 
 \subsection{Architektura Ruby on Rails}
@@ -655,7 +659,7 @@ návrhu MVC blíže.
 Ruby on Rails, jakožto \uv{opinionated} framework \citep[kpt. 4, Make
 Opinionated Software]{Fried2009}
 předpokládá totožnou MVC strukturu u~všech aplikací. ChiliProject
-v~tomto směru není výjimkou, jádro aplikace je v~těchto třech vrstvách:
+v~tomto směru není výjimkou, jádro aplikace je rozdělené do těchto tří vrstev:
 
 \begin{description}
 \item[Model] \hfill \\
@@ -666,7 +670,7 @@ Propojuje pohled a model. \hfill \\
 Zpracovává přijatá data a připravuje data pro šablony. \hfill \\
 Jednotlivé veřejné (public) metody controlleru představují akce. \hfill \\
 V~této vrstvě se většinou řeší autorizace.
-\item[View (Pohled)] \hfill \\
+\item[View (pohled)] \hfill \\
 Prezentuje data z~controlleru. \hfill \\
 Většina akcí controlleru má svůj pohled, současně tyto pohledu mohou pracovat s~dílčími (partial) pohledy
 \end{description}
@@ -678,10 +682,12 @@ Jedno z~často opakovaných pravidel při vývoji Ruby on Rails aplikací je
 \uv{Skinny controller; fat model}\citep{Buck2006} -- controller by měl
 obstarávat pouze jednoduché dotazování a přípravu dat. Většina logiky --
 ať už složitější dotazy nebo určité zpracování a reprezentace dat -- by
-měla být obstarána v~modelu, čímž se redukuje duplikace kódu. Bohužel
-důsledné následování tohoto pravidla vede k~jinému extrému -- třída,
-která má příliš mnoho funkcí bez zjevné souvislosti \citep{Libbery2011}.
-ChiliProject bohužel tímto problémem místy trpí.
+měla být obstarána v~modelu, čímž se redukuje duplikace kódu. Bohužel,
+důsledné následování tohoto pravidla vede k~jinému extrému -- model bude mít
+příliš mnoho funkcí bez zjevné souvislosti \citep{Libbery2011}.
+ChiliProject tímto problémem místy trpí; rozdělení modelů na logicky
+související celky \citep{Grimm2012} by mohlo být předmětem refaktorování
+v budoucích verzích.
 
 \subsubsection{ActiveRecord}
 
@@ -698,18 +704,21 @@ kompatibility s~existující databází postavené na odlišných konvencích je
 to problém -- pro takové případy však není ActiveRecord vhodné ani
 doporučené používat.
 
-Konvence pojmenování v~ActiveRecord jsou následující: - Název modelu je
-v~jednotném číslu (\lstinline!Project!), název odpovídající tabulky je
-v~množném číslu (\lstinline!projects!) - Primární klíč záznamu je ve
-sloupci \lstinline!id!, ActiveRecord nepředpokládá používání přirozených
-klíčů - Sloupce cizích klíčů mají název ve tvaru \lstinline!model_id!,
-např. \lstinline!project_id! - Některé názvy sloupců jsou vyhrazené pro
-použití ActiveRecord, především se jedná o~sloupec \lstinline!type!
+Konvence pojmenování v~ActiveRecord jsou následující:
+\begin{itemize}
+\item Název modelu je v~singuláru (\lstinline!Project!), název odpovídající tabulky je
+v~plurálu (\lstinline!projects!)
+\item Primární klíč záznamu je ve sloupci \lstinline!id!, ActiveRecord nepředpokládá používání přirozených
+klíčů
+\item Sloupce cizích klíčů mají název ve tvaru \lstinline!model_id!,
+např. \lstinline!project_id!
+\item Některé názvy sloupců rezervované pro ActiveRecord, především se jedná o~sloupec \lstinline!type!
 používaný pro dědění v~rámci jedné tabulky (Single Table Inheritance
 \citep[str. 278]{Fowler2003})
+\end{itemize}
 
 Většinu těchto konvencí lze u~jednotlivých modelů změnit, v~praxi je
-však jednodušší přizpůsobit se. ChiliProject tato pravidla také ve
+však jednodušší přizpůsobit~se. ChiliProject tato pravidla také ve
 většině případů dodržuje.
 
 Změny v~databázi jsou řešené prostřednictvím migrací, což jsou krátké
@@ -811,8 +820,8 @@ jazyk, ačkoli se jedná o~\gls{DSL}. Záměr je takový, že specifikace pro
 Cucumber je čitelná pro netechnického uživatele, což by mělo usnadnit
 komunikaci s~klientem. Jak však poukazuje \citep{Kinsella2011}, v~praxi
 tato idea příliš nefunguje -- výsledkem jsou často \uv{integrační testy
-v~přestrojení,} zbytečně dlouhé, hůře strukturované a přesto pro
-zadavatele nečitelné.
+v~přestrojení,} zbytečně dlouhé, hůře strukturované, a přesto pro
+klienta nečitelné.
 
 ChiliProject používá Test::Unit v~kombinaci s~knihovnou
 Shoulda\footnote{\url{https://github.com/thoughtbot/shoulda}}. Ta
@@ -824,10 +833,9 @@ stav mezi všemi testy v~rámci jednoho test case pomocí metody
 částí mají svůj vlastní stav, ale neovlivňují ostatní testy. Výhodou je,
 že jednotlivé testy mohou být kratší a tím pádem je snadnější
 identifikovat problematické chování. Kromě toho Shoulda nahrazuje metody
-test popisnějším makrem \lstinline!should!. V~praxi tak test modelu
-s~použitím Shoulda může vypadat takto:
+test popisnějším makrem \lstinline!should!. Pro praktický příklad viz \autoref{lst:shoulda}.
 
-\begin{lstlisting}
+\begin{lstlisting}[float,caption={Test case s frameworky Test::Unit a Shoulda},label=lst:shoulda]
 class UserTest < ActiveSupport::TestCase
   # Metoda setup je sdilena pro vsechny testy
   # v~tomto test case
@@ -854,6 +862,7 @@ class UserTest < ActiveSupport::TestCase
 
 end
 \end{lstlisting}
+
 Testy potřebují mít k~dispozici data na kterých bude prověřována
 funkčnost aplikace. Rails standardně podporují tzv. fixtures, což jsou
 serializovaná data (nejčastěji ve formátu YAML, což je činní
@@ -926,9 +935,9 @@ zásahu do originální aplikace, podrobněji viz
 
 Prvotním předpokladem implementace byla kompatibilita s~poslední verzí
 oficiálního interpreta Ruby, \gls{MRI} 1.9.3. Samotný ChiliProject
-podporuje také verze 1.8.7 a 1.9.2, pokud je to však možné, nevyplatí se
-je používat i proto, že oproti novější verzi poskytují horší výkon -- a
-to i v~případě \gls{REE} \citep[End of Life]{REEEOL}. S~ohledem na stáří
+podporuje také verze 1.8.7 a 1.9.2, avšak pokud je to možné, nevyplatí se
+je používat i proto, že oproti novější verzi poskytují horší výkon. Je tomu
+tak i v~případě \gls{REE} \citep[End of Life]{REEEOL}. S~ohledem na stáří
 knihoven používaných v~systému ChiliProject zpravidla ani není problém
 zajistit kompatibilitu se staršími verzemi interpretu -- stále větší
 výzvou však bude udržovat krok s~novými verzemi Ruby.
@@ -939,9 +948,9 @@ staršími verzemi, tak se sytémem Redmine.
 
 \chapter{Návrh a implementace rozšíření}
 
-Na základě analýzy požadavků je možné určit rozložení požadovaných
-funkcí do samostatných rozšíření. Samozřejmě by modifikace bylo možné
-seskupit do jediného celku -- to by sice zmenšilo duplikaci některých částí kódu,
+Na základě analýzy požadavků lze určit rozložení požadovaných
+funkcí do samostatných rozšíření. Samozřejmě by bylo možné modifikace
+seskupit do jediného celku -- to by sice snížilo duplikaci některých částí kódu,
 ale výsledek by byl nepřehledný a obtížně udržovatelný. Proto jsem funkce
 rozdělil do dílčích částí tak, aby každé rozšíření bylo použitelné
 nezávisle na ostatních; sdílené či vzájemně se překrývající části kódu
@@ -962,7 +971,7 @@ přizpůsobenou pro testování (nejedná se však o~funkční zásahy do jádra
 
 Každé rozšíření pracuje s~odlišnými částmi systému ChiliProject, proto
 se návrhu a implemenaci věnuji pro každé rozšíření zvlášť. Některé
-základní postupy jsou však pro každé rozšíření stejné.
+základní postupy přitom zůstávají pro každé rozšíření stejné.
 
 \section{Příprava testovacího prostředí}
 
@@ -1643,6 +1652,7 @@ příslušné oprávnění, je autorem úkolu a nebo byl k~němu přiřazen --
 obdobně jako s~přístupem je to i s~viditelností úkolu v~přehledu úkolů.
 
 \subsection{Existující řešení}
+\label{sec:private_issues_exist}
 
 V~této oblasti je Redmine napřed -- viditelnost úkolů je možné určit od
 verze 1.2\footnote{\url{http://www.redmine.org/issues/7414}}.
