@@ -778,7 +778,7 @@ Celkově je na systému rozšíření pro ChiliProject zajímavé, jak málo
 funkcí řeší samotná aplikace. Většinu potřeb rozšíření obstará samotné
 Ruby ve spolupráci s Rails. Je to příjemný rozdíl například oproti PHP,
 kde řada aplikací spoléhá čistě na explicitní systém událostí
-a zpětných volání -- pokud událost není na správném místě, jedinou možností je
+a zpětných volání -- pokud událost není vyvolána na správném místě, jedinou možností je
 většinou zásah do jádra aplikace.
 
 \subsection{Struktura testů}
@@ -821,7 +821,7 @@ zadavatele. Zde se často používá framework Cucumber\footnote{\url{http://cuk
 chování aplikace se popisuje v rámci tzv. features, kde jsou jednotlivé
 scénáře rozepsány v jazyce Gherkin -- ten záměrně vypadá jako přirozený
 jazyk, ačkoli se jedná o \gls{DSL}. Záměr je takový, že specifikace pro
-Cucumber je čitelná pro netechnického uživatele, což by mělo usnadnit
+Cucumber je čitelná i pro netechnického uživatele, což by mělo usnadnit
 komunikaci s klientem. Jak však poukazuje \citep{Kinsella2011}, v praxi
 tato idea příliš nefunguje -- výsledkem jsou často \uv{integrační testy
 v přestrojení,} zbytečně dlouhé, hůře strukturované, a přesto pro
@@ -834,8 +834,8 @@ metody, jednak přidává podporu pro kontext -- ten umožňuje sdílení stavu
 mezi jednotlivými testy. Zatímco Test::Unit umožňuje připravit sdílený
 stav mezi všemi testy v rámci jednoho test case pomocí metody
 \lstinline!setup!, kontext umožňuje test case dále rozčlenit do menších
-částí mají svůj vlastní stav, ale neovlivňují ostatní testy. Výhodou je,
-že jednotlivé testy mohou být kratší a tím pádem je snadnější
+částí, které mohou mít svůj vlastní sdílený stav. Výhodou je,
+že jednotlivé testy mohou být kratší, a tím pádem je snazší
 identifikovat problematické chování. Kromě toho Shoulda nahrazuje metody
 test popisnějším makrem \lstinline!should!. Pro praktický příklad viz \autoref{lst:shoulda}.
 
