@@ -1,1 +1,0 @@
-/home/j/skola/bkp/bkp.md
