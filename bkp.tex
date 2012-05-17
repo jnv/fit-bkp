@@ -53,7 +53,7 @@
 \widowpenalty=500
 \clubpenalty=500
 
-\hyphenation{Chili-Project}
+\hyphenation{Chili-Project Red-mine}
 
 \begin{document}
 
@@ -110,7 +110,7 @@ name=submodul,
 description={V kontextu systému Git: odkaz na externí repozitář z~lokálního repozitáře}
 } \newglossaryentry{gem}{
 name=gem,
-description={V kontextu jazyka Ruby: správce balíčků s~aplikacemi a knihovnami pro Ruby}
+description={V kontextu jazyka Ruby: standardní formát balíčků pro aplikace a knihovny v Ruby}
 } \newglossaryentry{scope}{
 name=scope,
 description={V kontextu Rails: makro které umožňuje definovat podmínky výběru z~databáze, volání scopes lze řetězit}
@@ -124,6 +124,10 @@ description={Metoda fixování testovacích dat, viz \autoref{sec:rails_tests}}
 name=rozšíření,
 description={Plug-in, add-on, extension, module -- kód který rozšiřuje funkčnost aplikace bez potřeby její úpravy}
 }
+\newglossaryentry{callback}{
+name=zpětné volání,
+description={Callback -- reference na funkci předaná za účelem jejího dalšího volání; v Rails se zpětná volání používají k obsluze událostí}
+}
 \newacronym{ICT}{ICT}{Information and communication technologies}
 \newacronym{GPL}{GPL}{GNU General Public License}
 \newacronym{AGPL}{AGPL}{Affero General Public License}
@@ -132,10 +136,11 @@ description={Plug-in, add-on, extension, module -- kód který rozšiřuje funk�
 \newacronym{API}{API}{Application Programming Interface}
 \newacronym{MRI}{MRI}{Matz's Ruby Interpreter}
 \newacronym{REE}{REE}{Ruby Enterprise Edition}
-\newacronym{TDD}{TDD}{Test Driven Development}
+\newacronym{TDD}{TDD}{Test-Driven Development}
 \newacronym{CI}{CI}{Continuous Integration}
 \newacronym{HTTP}{HTTP}{Hypertext Transfer Protocol}
 \newacronym{SQL}{SQL}{Structured Query Language}
+\newacronym{ORM}{ORM}{Object-Relational Mapping}
 
 \begin{introduction}
 
@@ -761,8 +766,7 @@ funkcí řeší samotná aplikace. Většinu potřeb rozšíření obstará samo
 Ruby ve spolupráci s~Rails. Je to příjemný rozdíl oproti například PHP
 kde řada aplikací spoléhá čistě na systém explicitních zpětných volání
 -- pokud volání není na místě které potřebujete, jedinou možností je
-většinou zásah do jádra aplikace (i pouze za účelem přidání zpětného
-volání).
+většinou zásah do jádra aplikace.
 
 \subsection{Struktura testů}
 
@@ -1002,12 +1006,12 @@ post-commit hook. Výsledek buildu je veřejně přístupný, může tak slouži
 jako základní indikátor pro vývojáře i uživatele, zda je aktuální
 vývojová verze aplikace použitelná.
 
-Travis-CI jsem použil pro dva případy: pro testování ChiliProjectu jako
-celku s~instalovanými rozšířeními a pro testování jednotlivých
+Travis-CI jsem použil pro dva případy: testování ChiliProjectu jako
+celku s~instalovanými rozšířeními a testování jednotlivých
 rozšíření.
 
 První případ představoval přidání konfigurace pro Travis-CI do
-repozitáře \lstinline!chiliproject-fit!. Každé přidané rozšíření je
+repozitáře \emph{chiliproject-fit}. Každé přidané rozšíření je
 \gls{submodul} pro Git, proto je nutné před testem provést jejich
 inicializaci. Současně je nutné připravit testovací databázi --
 poskytnout údaje pro připojení, databázi vytvořit a spustit migrace. Ve
@@ -1050,7 +1054,7 @@ načtení souboru) způsobí pád testů.
 Oprava této chyby byla poměrně banální, největším problémem bylo jí
 nalézt a otestovat -- testy Engines jsou pod Ruby 1.9 zcela nefunkční.
 Výsledkem je opravený \gls{fork} modulu \lstinline!engines!, který jsem
-zahrnul do distribuce \lstinline!chiliproject-fit!. Problém byl
+zahrnul do distribuce \emph{chiliproject-fit}. Problém byl
 nahlášený vývojářům ChiliProject, bohužel oprava dosud nebyla zahrnutá
 do oficiální verze\footnote{\url{https://www.chiliproject.org/issues/952}}.
 
@@ -1183,7 +1187,7 @@ Vícenásobné volání makra \lstinline!has_many! nahradí předchozí
 definici, proto bude asociace definovaná v~rozšíření brána v~potaz.
 
 Větší problém je s~validátory, které se řetězí -- vícenásobná definice
-validace na stejný atribut pouze přidá další zpětné volání na konec
+validace na stejný atribut pouze přidá další \gls{callback} na konec
 seznamu validací. To však vadí pokud chceme z~rozšíření nastavit méně
 přísné podmínky platnosti záznamu -- v~tomto případě se jedná
 o~unikátnost názvu skupiny. Standardně musí mít každá skupina unikátní
@@ -1293,9 +1297,8 @@ stejně jako globální skupiny a je možné mezi nimi vyhledávat. K~tomu
 však bylo nutné nahradit odpovídající pohled
 \lstinline!projects/settings/members! -- protože totéž bylo nutné
 později provést i pro projektové role, vyextrahoval jsem tento pohled do
-samostatného rozšíření \emph{MembersView}
-(\lstinline!chiliproject_members_view!) které funguje také jako
-\gls{gem}.
+samostatného rozšíření \emph{Members View}
+které funguje také jako \gls{gem}.
 
 Z~hlediska autorizace přidává rozšíření jedno oprávnění: \emph{Manage
 project groups} -- má-li uživatel roli s~tímto oprávněním (společně
@@ -1565,8 +1568,8 @@ upraveno pomocí JavaScriptu -- pohledy bohužel nemají dostatek zpětných
 volání, aby je bylo možné rozšířit na straně serveru. O~přístupnosti pro
 uživatele s~vypnutým JavaScriptem však beztak nelze hovořit, protože
 samotný framework Rails JavaScript vyžaduje pro běžnou uživatelskou
-interakci\footnote{Rails od verze 3 používá \uv{unobtrusive JavaScript}
-  který tento problém z~velké části řeší.}.
+interakci\footnote{Rails 3 používá \uv{unobtrusive JavaScript}
+  což tento problém z~velké části řeší.}.
 
 \begin{figure}[tbp]
 \centering
