@@ -5,7 +5,7 @@
 % czech thesis in Czech language
 % english thesis in English language
 
-\documentclass[thesis=B,czech]{FITthesis}[2012/04/27]
+\documentclass[thesis=B,czech]{FITthesis}[2012/05/02]
 
 \usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
 
@@ -27,6 +27,7 @@
 }
 
 \usepackage{dirtree} %directory tree visualisation
+%\usepackage[hyphens]{url}
 
 % % list of acronyms
 \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
@@ -56,25 +57,25 @@
 
 \newglossaryentry{wiki}{
 name=wiki,
-description={systém správy obsahu \citep{WikiWiki}}
+description={Systém správy obsahu \citep{WikiWiki}}
 } \newglossaryentry{issue tracker}{
 name=issue tracker,
-description={systém pro správu úkolů, problémů, požadavků i chyb, viz také \gls{bug tracker}}
+description={Systém pro správu úkolů, problémů, požadavků i chyb, viz také \gls{bug tracker}}
 } \newglossaryentry{workflow}{
 name=workflow,
-description={průběh práce}
+description={Průběh práce}
 } \newglossaryentry{namespace}{
 name=namespace,
-description={jmenný prostor}
+description={Jmenný prostor}
 } \newglossaryentry{SVN}{
 name=Subversion,
-description={centralizovaný systém správy kódu}
+description={Centralizovaný systém správy kódu}
 } \newglossaryentry{git}{
 name=Git,
-description={decentralizovaný systém správy kódu}
+description={Distribuovaný systém správy kódu}
 } \newglossaryentry{mercurial}{
 name=Mercurial,
-description={decentralizovaný systém správy kódu}
+description={Distribuovaný systém správy kódu}
 } \newglossaryentry{SCM}{
 name=SCM,
 description={Source Code Management, souhrnné označení software pro správu kódu}
@@ -83,40 +84,40 @@ name=LDAP,
 description={Lightweight Directory Access Protocol, adresářová služba}
 } \newglossaryentry{bug tracker}{
 name=bug tracker,
-description={systém hlášení úkolů a chyb zpravidla, lze považovat za speciální případ \gls{issue tracker}}
+description={Systém hlášení úkolů a chyb zpravidla, lze považovat za speciální případ \gls{issue tracker}}
 } \newglossaryentry{SaaS}{
 name=SaaS,
 description={Software as a Service, software poskytovaný formou on-line služby}
 } \newglossaryentry{mikroblog}{
 name=mikroblog,
-description={zjednodušený a minimalizovaný blog, například Twitter}
+description={Zjednodušený a minimalizovaný blog, například Twitter}
 } \newglossaryentry{fork}{
 name=fork,
-description={odštěpení od hlavní vývojové větve, často s úmyslem dalšího nezávislého vývoje}
+description={Odštěpení od hlavní vývojové větve, často s úmyslem dalšího nezávislého vývoje}
 } \newglossaryentry{duck typing}{
 name=duck typing,
 description={\uv{Pokud to kváká jako kachna, budu tomu říkat kachna} -- není kontrolován typ objektu, postačí že ví, jak odpovědět na zaslan zprávy}
 } \newglossaryentry{commit}{
 name=commit,
-description={sada změn přidaných do repozitáže kódu}
+description={Sada změn přidaných do repozitáže kódu}
 } \newglossaryentry{submodul}{
 name=submodul,
-description={v kontextu systému Git: odkaz na externí repozitář z lokálního repozitáře}
+description={V kontextu systému Git: odkaz na externí repozitář z lokálního repozitáře}
 } \newglossaryentry{gem}{
 name=gem,
-description={v kontextu jazyka Ruby: správce balíčků s aplikacemi a knihovnami pro Ruby}
+description={V kontextu jazyka Ruby: správce balíčků s aplikacemi a knihovnami pro Ruby}
 } \newglossaryentry{scope}{
 name=scope,
-description={v kontextu Rails: makro které umožňuje definovat podmínky výběru z databáze, volání scopes lze řetězit}
+description={V kontextu Rails: makro které umožňuje definovat podmínky výběru z databáze, volání scopes lze řetězit}
 } \newglossaryentry{ACL}{
 name=ACL,
 description={Access Control List, seznam uživatelů a jejich oprávnění pro přístup k určitému zdroji}
 } \newglossaryentry{fixtures}{
 name=fixtures,
-description={metoda fixování testovacích dat, viz \autoref{sec:rails_tests}}
+description={Metoda fixování testovacích dat, viz \autoref{sec:rails_tests}}
 } \newglossaryentry{plugin}{
-name=plug-in,
-description={rozšíření}
+name=rozšíření,
+description={Plug-in, add-on, extension, module -- kód který rozšiřuje funkčnost aplikace bez potřeby její úpravy}
 }
 \newacronym{ICT}{ICT}{Information and communication technologies}
 \newacronym{GPL}{GPL}{GNU General Public License}
