@@ -316,7 +316,7 @@ posuzovaná aplikace musí splňovat.
 
 \begin{description}
 \item[Webová aplikace]
-  Ačkoli distribuované nástroje\footnote{Jako je například Ditz -- \url{http://ditz.rubyforge.org/}} mají své kouzlo,
+  Ačkoliv distribuované nástroje\footnote{Jako je například Ditz -- \url{http://ditz.rubyforge.org/}} mají své kouzlo,
   nelze po uživatelích vyžadovat instalaci software, aby mohli hlásit
   chyby.
 \item[Samostatně hostovaná]
@@ -507,7 +507,7 @@ byly nesystematičnost a uzavřenost vývoje. ChiliProject se proto snaží
 být otevřenější (z hlediska přístupnosti přispěvatelům) a stabilnější
 alternativou k Redmine.
 
-Ačkoli na první pohled vypadá ChiliProject odlišně, jedná se skutečně
+Ačkoliv na první pohled vypadá ChiliProject odlišně, jedná se skutečně
 o pouhé kosmetické rozdíly. Po funkční stránce jsou systémy srovnatelné -- občas
 si koneckonců i vyměňují kód. ChiliProject existuje teprve přes
 rok, což je v případě zavedeného a rozsáhlého projektu krátká doba pro
@@ -535,7 +535,7 @@ oficiální dokumentace.
 Rozhodl jsem se však pro přechod na systém ChiliProject. Struktura databáze
 je u obou systémů -- až na změny v nejnovějších verzích -- stejná,
 migrace z Redmine tak nepředstavuje žádný problém. Jak jsem již zmínil,
-oba systémy se od sebe liší hlavně svým směřováním, ačkoli
+oba systémy se od sebe liší hlavně svým směřováním, ačkoliv
 ChiliProjectu chybí jedna z požadovaných funkcí
 (\autoref{sec:private_issues_exist}). Nové verze Redmine vychází
 \uv{až když jsou hotové.} ChiliProject má pevně vymezený časový rámec
@@ -572,7 +572,7 @@ Ruby je dynamický, silně typovaný\footnote{Přesněji řečeno používá
   \gls{duck typing}, na rozdíl od slabě typovaných dynamických jazyků,
   jako je JavaScript či PHP, však Ruby neprovádí implicitní konverzi typů
   \citep{Lamontagne2007}} jazyk, inspirovaný vlastnostmi jazyka
-Smalltalk a syntaxí jazyka Perl \citep{Stewart2001} -- ačkoli podle
+Smalltalk a syntaxí jazyka Perl \citep{Stewart2001} -- ačkoliv podle
 autora Ruby, Yukihiro \uv{Matz} Matsumoto, podobu jazyka ovlivnil i editor
 Emacs \citep{Matsumoto2012}.
 
@@ -736,7 +736,7 @@ takovým změnám automaticky přiřadit opačný postup, potom si migrace
 vystačí s jedinou metodou \lstinline!change!.
 
 Charakteristické pro Rails je, že databázi považuje jen za \uv{hloupé}
-úložiště dat. Ačkoli je možné v migraci definovat některá omezení a unikátní klíče,
+úložiště dat. Ačkoliv je možné v migraci definovat některá omezení a unikátní klíče,
 Rails vyžaduje provádění kontroly dat na aplikační úrovni.
 ActiveRecord sám o sobě neřeší ani referenční integritu či
 kompozitní klíče; jsou-li však takové funkce vyžadovány, v řadě případů
@@ -820,7 +820,7 @@ které by měly ověřit, zda funkčnost aplikace vyhovuje požadavkům
 zadavatele. Zde se často používá framework Cucumber\footnote{\url{http://cukes.info/}};
 chování aplikace se popisuje v rámci tzv. features, kde jsou jednotlivé
 scénáře rozepsány v jazyce Gherkin -- ten záměrně vypadá jako přirozený
-jazyk, ačkoli se jedná o \gls{DSL}. Záměr je takový, že specifikace pro
+jazyk, ačkoliv se jedná o \gls{DSL}. Záměr je takový, že specifikace pro
 Cucumber je čitelná i pro netechnického uživatele, což by mělo usnadnit
 komunikaci s klientem. Jak však poukazuje \citep{Kinsella2011}, v praxi
 tato idea příliš nefunguje -- výsledkem jsou často \uv{integrační testy
@@ -885,7 +885,7 @@ mock objekty. S tím často souvisí i tzv. stubs, pro podrobnosti viz
 v případech, kdy použití skutečného objektu je příliš náročné nebo přímo
 nemožné (například při práci s externím API). Kromě toho je pro
 mock objekty možné určit, kolikrát má být zavolána určitá metoda a
-s jakými parametry -- pokud předpoklad není splněný, test selže. Ačkoli
+s jakými parametry -- pokud předpoklad není splněný, test selže. Ačkoliv
 Ruby činní nasazení mock objektů velice jednoduché, jejich přílišné
 používání může vést k zavádějícím a mnohdy i špatně udržovatelným testům
 \citep{Parsons2011}.
@@ -979,7 +979,7 @@ základní postupy přitom zůstávají pro každé rozšíření stejné.
 
 \section{Příprava testovacího prostředí}
 
-Psaní testů pro rozšíření bohužel není příliš časté, ačkoli to
+Psaní testů pro rozšíření bohužel není příliš časté, ačkoliv to
 ChiliProject přímo podporuje. Informace v této oblasti jsou poměrně
 střídmé a narazil jsem na problémy s provozováním testů pod Ruby 1.9.3
 -- zřejmě se nikdo nepokoušel testovat rozšíření pod touto verzí.
@@ -1115,7 +1115,7 @@ administrátor.
 
 Některé z požadavků částečně splňuje rozšíření Group Assignee\footnote{\url{http://www.redmine.org/plugins/groupsassignee}},
 které umožňuje přiřadit skupině zodpovědné osoby jenž mohou přiřazovat a
-odebírat členy. Ačkoli to částečně řeší decentralizaci správy, stále je
+odebírat členy. Ačkoliv to částečně řeší decentralizaci správy, stále je
 nutné aby administrátor skupiny nadefinoval. Navíc všechny skupiny stále
 existují v globálním konextu, což při jejich větším množství povede
 k nepřehlednosti.
@@ -1389,7 +1389,7 @@ Uživatel s oprávněním pro modifikaci projektového \gls{workflow} může:
 
 Částečný překryv funkcí byl s rozšířením Role Shift\footnote{\url{http://projects.andriylesyuk.com/projects/role-shift}}
 které funguje na principu \emph{posunu} role -- jedna role se tak
-v určitém projektu může chovat jako jiná. Ačkoli to nezní moc užitečně,
+v určitém projektu může chovat jako jiná. Ačkoliv to nezní moc užitečně,
 částečně to řeší požadavek 3, protože je možné předefinovat i vestavěné
 role. Pro řešení vestavěných rolí se tato strategie ukázala jako
 nejschůdnější.
