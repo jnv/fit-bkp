@@ -52,6 +52,7 @@
 
 \renewcommand\lstlistingname{Ukázka kódu}
 \renewcommand\lstlistlistingname{Ukázky kódu}
+\def\appendixautorefname{Příloha}
 
 \widowpenalty=500
 \clubpenalty=500
@@ -131,11 +132,14 @@ description={Plug-in, add-on, extension, module -- kód který rozšiřuje funk�
 name=zpětné volání,
 description={Callback -- reference na funkci předaná za účelem jejího dalšího volání; v~Rails se zpětná volání používají k~obsluze událostí}
 }
+\newglossaryentry{YAML}{
+name=YAML,
+description={YAML Ain't Markup Language -- textový formát pro serializaci dat, zaměřený na uživatelskou přívětivost; viz \url{http://www.yaml.org/}}
+}
 \newacronym{ICT}{ICT}{Information and communication technologies}
 \newacronym{GPL}{GPL}{GNU General Public License}
 \newacronym{AGPL}{AGPL}{Affero General Public License}
 \newacronym{DSL}{DSL}{Domain Specific Language}
-\newacronym{YAML}{YAML}{Yet Another Markup Language}
 \newacronym{API}{API}{Application Programming Interface}
 \newacronym{MRI}{MRI}{Matz's Ruby Interpreter}
 \newacronym{REE}{REE}{Ruby Enterprise Edition}
@@ -144,10 +148,11 @@ description={Callback -- reference na funkci předaná za účelem jejího dalš
 \newacronym{HTTP}{HTTP}{Hypertext Transfer Protocol}
 \newacronym{SQL}{SQL}{Structured Query Language}
 \newacronym{ORM}{ORM}{Object-Relational Mapping}
+\newacronym{FIT}{FIT}{Fakultra informačních technologií}
 
 \begin{introduction}
 
-Oddělení ICT Fakulty informačních technologií má na starost správu softwarového i hardwarového vybavení. Zajišťuje funkčnost fakultních informačních systémů i různých zařízení (tiskárny, počítače v~učebnách). To znamená sledovat a řešit velké množství různých požadavků, od přidání opravy do systému Edux po výměnu toneru v~tiskárnách. Správu požadavků by měl usnadnit jednotný systém pro správu projektů. Takový systém může podporovat i sdílení znalostí (např. v~rámci \gls{wiki}) a správu kódu.
+Oddělení \glslink{ICT}{ICT} \glslink{FIT}{Fakulty informačních technologií} má na starost správu softwarového i hardwarového vybavení. Zajišťuje funkčnost fakultních informačních systémů i různých zařízení (tiskárny, počítače v~učebnách). To znamená sledovat a řešit velké množství různých požadavků, od přidání opravy do systému Edux po výměnu toneru v~tiskárnách. Správu požadavků by měl usnadnit jednotný systém pro správu projektů. Takový systém může podporovat i sdílení znalostí (např. v~rámci \gls{wiki}) a správu kódu.
 
 Pro správu projektů oddělení používá systém Redmine\footnote{\url{http://www.redmine.org/}}, který splňuje většinu jejich potřeb. Redmine má však určité nedostatky z~hlediska správy většího množství projektů a uživatelů.
 
@@ -172,7 +177,7 @@ s~ohledem na funkce vyžadované ICT oddělením.
 Redmine je webová aplikace napsaná v~jazyce Ruby s~použitím frameworku
 Rails, dostupná pod open-source licencí \gls{GPL} verze 2.
 
-Základem struktury Redmine je \emph{projekt} ke kterému je možné
+Základem struktury Redmine je \emph{projekt}, ke kterému je možné
 přiřadit uživatele. Každý projekt představuje částečně oddělenou
 jednotku s~vlastní sadou úkolů, repozitářem kódu a \gls{wiki}.
 Specifikem projektů v~Redmine je, že mohou mít hierarchickou strukturu.
@@ -286,8 +291,8 @@ pracovat pouze zlomek uživatelů. Jako lepší možnost se nabízí selektivní
 přidání uživatele ve chvíli, kdy je s~ním zapotřebí začít pracovat.
 
 Tyto funkce je možné do Redmine doplnit, nicméně jsem nejprve prozkoumal
-alternativy -- je možné že existuje systém, který je funkčně
-kompletnější než Redmine, nebo je snadněji rozšiřitelný.
+alternativy -- je možné, že existuje systém, který je funkčně
+kompletnější nebo snadněji rozšiřitelný než Redmine.
 
 \chapter{Porovnání alternativních systémů}
 
@@ -309,26 +314,25 @@ v~rámci jediného systému.
 Pro zúžení výběru jsem stanovil základní kritéria, která každá
 posuzovaná aplikace musí splňovat.
 
-\begin{itemize}
-\item
-  Webová aplikace -- ačkoli distribuované nástroje\footnote{Jako je
-    například Ditz -- \url{http://ditz.rubyforge.org/}} mají své kouzlo,
+\begin{description}
+\item[Webová aplikace]
+  Ačkoli distribuované nástroje\footnote{Jako je například Ditz -- \url{http://ditz.rubyforge.org/}} mají své kouzlo,
   nelze po uživatelích vyžadovat instalaci software, aby mohli hlásit
   chyby.
-\item
-  Samostatně hostovaná -- software musí být možné provozovat v~rámci
+\item[Samostatně hostovaná]
+  Software musí být možné provozovat v~rámci
   infrastruktury fakulty, nemůže se jednat o~\gls{SaaS} řešení.
-\item
-  Open-source -- aplikaci je možné modifikovat a kompletní zdrojový kód
+\item[Open source]
+  Aplikaci je možné modifikovat a kompletní zdrojový kód
   je možné zveřejnit.
-\item
-  Aktivní vývoj -- poslední vydaná verze by neměla být starší než rok,
+\item[Aktivní vývoj]
+  Poslední vydaná verze by neměla být starší než rok,
   větší komunita uživatelů a vývojářů může být výhodou.
-\item
-  Nezávislost na proprietálních systémech -- v~rámci integrace do
+\item[Nezávislost na proprietálních systémech]
+  V~rámci integrace do
   fakultní infrastruktury by aplikaci mělo být možné provozovat na
   unixových serverech bez závislosti například na MS SQL Server.
-\end{itemize}
+\end{description}
 Následující aplikace tato kritéria splňují, posoudil jsem proto jejich
 funkčnost a rozšiřitelnost s~ohledem na požadavky.
 
@@ -355,9 +359,9 @@ pomocí alternativních vzhledů a pokročilejší konfigurace.
 
 Nejzásadnější nedostatek systému Trac představuje nemožnost provozovat více
 projektů nad stejnou databází. Systém umožňuje poměrně jednoduše
-nakonfigurovat nové instance které sdílí zdrojový kód i uživatele,
-projekty jsou však vzájemně izolované a není možné se jednoduše např.
-odkazovat z~úkolu v~projektu A~na úkol v~projektu B. Tím pádem není
+nakonfigurovat nové instance, které sdílí zdrojový kód i uživatele.
+Projekty jsou však vzájemně izolované; například není možné jednoduše
+odkazovat z~úkolu v~projektu A~na úkol v~projektu B. Není
 možné ani vytvářet hierarchii projektů.
 
 Přidání těchto funkcí by znamenalo zásadní zásah do architektury systému
@@ -372,7 +376,7 @@ Ruby on Rails 3.2.
 GitLab, je vhodný především pro malé vývojářské týmy. Každý projekt
 představuje repozitář kódu s~vlastní wiki a úkoly. Mimo to má projekt
 k~dispozici i \emph{wall} (nástěnku), kam je možné přidávat soubory, a také
-\emph{merge requests} což je užitečná funkce pro revidování nového kódu.
+\emph{merge requests}, což je užitečná funkce pro revidování nového kódu.
 
 Projekty (potažmo repozitáře) není možné nijak organizovat,
 systém oprávnění je příliš jednoduchý a issue tracker velice
@@ -402,7 +406,7 @@ podrobně definovat uživatelské role na úrovni jednotlivých projektů.
 
 Velké množství funkcí však často vede k~horší přehlednosti, i přesto, že
 The Bug Genie je -- dle oficiální prezentace -- krásný a
-(uživatelsky) přívětivý, z~praktických zkušeností je mi známo, že s~ním měli problém i
+(uživatelsky) přívětivý. Z~praktických zkušeností je mi známo, že s~ním měli problém i
 zkušenější uživatelé. Některé problémy s~použitelností by šlo vyřešit
 zjednodušením kategorizace úkolů, odstraněním přebytečných funkcí a
 vylepšením vzhledu, případně zaškolením uživatelů.
@@ -434,15 +438,15 @@ lze vytvořit úkoly a dlouhodobé informace je možné zaznamenat na
 daleko\footnote{Tato funkce je inspirovaná aplikací
   \href{http://backpackit.com/}{Backpack}}.
 
-Teambox je na první dojem velice jednoduchý a přehledný. Bohužel
-s~rostoucími nároky týmu a s~velkým množstvím projektů tento dojem rychle
-mizí. Velké týmy se brzy utopí v~záplavě diskuzí, softwarovým projektům
+Teambox je zpočátku velice jednoduchý a přehledný.
+S~rostoucími nároky týmu a s~velkým množstvím projektů se však situace rychle mění.
+Velké týmy se brzy utopí v~záplavě diskuzí, softwarovým projektům
 bude vadit minimalistická správa úkolů a chybějící integrace repozitářů
 kódu. Pages není možné hierarchicky třídit a správa oprávnění je velice
 omezená.
 
 Pro malé týmy a nesoftwarové projekty je však Teambox výborné řešení a
-v~současné době se začíná prosazovat i na ČVUT\footnote{\url{http://teambox.fit.cvut.cz/}}.
+v~současné době se začíná prosazovat i na \glslink{FIT}{FIT}\footnote{\url{http://teambox.fit.cvut.cz/}}.
 
 \section[Open Atrium]{Open Atrium\footnote{\url{http://openatrium.com/}}}
 
@@ -507,25 +511,25 @@ Ačkoli na první pohled vypadá ChiliProject odlišně, jedná se skutečně
 o~pouhé kosmetické rozdíly. Po funkční stránce jsou systémy srovnatelné -- občas
 si koneckonců i vyměňují kód. ChiliProject existuje teprve přes jeden
 rok, což je v~případě zavedeného a rozsáhlého projektu krátká doba pro
-vznik zásadních změn. Je však zřejmé že oba projekty směřují jiným
-směrem, Redmine stále \uv{nabaluje} další funkce a opravy, zatímco
+vznik zásadních změn. Je však zřejmé, že oba projekty směřují jiným
+směrem; Redmine stále \uv{nabaluje} další funkce a opravy, zatímco
 vývojáři ChiliProjectu otevřeně diskutují o~nutnosti radikálních změn
 v~kódu. Pomyslné nůžky mezi těmito dvěma projekty se budou nadále
 rozevírat.
 
 \section{Zhodnocení}
 
-Z~celkových 24 systémů (\ref{chap:seznampm}) jsem jich podrobněji
+Z~celkových 24 systémů (\autoref{chap:seznampm}]) jsem jich podrobněji
 prozkoumal šest. Nejvíce požadovaných vlastností splňoval systém The Bug
 Genie. Usoudil jsem však, že se na tento systém migrovat nevyplatí --
 oproti Redmine má z~hlediska webové aplikace velice specifické chování a
 strmější křivku učení. Další nevýhodou je použitá platforma -- pominu-li
-syntaktické a ideové rozdíly PHP a Ruby (což je spíše otázkou osobní
+syntaktické a ideové rozdíly PHP a Ruby (což je spíše otázka osobní
 preference), PHP nenabízí srovnatelnou dynamiku, které se věnuji
 v~následující kapitole. V~neposlední řadě je
 rozdíl v~použitých knihovnách -- Redmine je postavený na Ruby on Rails,
 což je časem prověřený a dobře zdokumentovaný framework. The Bug Genie
-má vlastní framework kde prakticky jediným zdrojem informací je
+má vlastní framework, kde prakticky jediným zdrojem informací je
 oficiální dokumentace.
 
 Rozhodl jsem však pro přechod na systém ChiliProject. Struktura databáze
@@ -533,10 +537,10 @@ je u~obou systémů -- až na změny v~nejnovějších verzích -- stejná,
 migrace z~Redmine tak nepředstavuje žádný problém. Jak jsem již zmínil,
 oba systémy se od sebe liší hlavně svým směřováním, ačkoli
 ChiliProjectu chybí jedna z~požadovaných funkcí
-(\ref{sec:private_issues_exist}). Nové verze Redmine vychází
+(\autoref{sec:private_issues_exist}). Nové verze Redmine vychází
 \uv{až když jsou hotové.} ChiliProject má pevně vymezený časový rámec
 -- \emph{minor} verze, která je zpětně kompatibilní,
-vychází každý měsíc. \emph{Major} verze která může zahrnovat rozsáhlejší změny
+vychází každý měsíc. \emph{Major} verze, která může zahrnovat rozsáhlejší změny,
 vychází každý půlrok. V~případě potřeby vyjde \emph{patch} verze (například je nalezena chyba v zabezpečení).
 Pravidelné vydávání nových verzí zajišťuje, že se hotové funkce dostanou
 k~uživatelům co nejdříve, vývojáři zase mají jasně vymezený časový
@@ -865,7 +869,7 @@ end
 
 Testy potřebují mít k~dispozici data na kterých bude prověřována
 funkčnost aplikace. Rails standardně podporují tzv. fixtures, což jsou
-serializovaná data (nejčastěji ve formátu YAML, což je činní
+serializovaná data (nejčastěji ve formátu \gls{YAML}, což je činní
 snadno editovatelnými), která jsou před provedením testů načtena do
 databáze. Fixtures musí být průběžně udržovány a s~rostoucí komplexností
 aplikace se komplikuje i jejich struktura. Proto se místo toho většinou
