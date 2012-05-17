@@ -710,13 +710,13 @@ doporučené používat.
 
 Konvence pojmenování v ActiveRecord jsou následující:
 \begin{itemize}
-\item Název modelu je v singuláru (\lstinline!Project!), název odpovídající tabulky je
-v plurálu (\lstinline!projects!)
+\item Název modelu je v singuláru (\lstinline!Project!), název odpovídající tabulky
+v plurálu (\lstinline!projects!).
 \item Primární klíč záznamu je ve sloupci \lstinline!id!, ActiveRecord nepředpokládá používání přirozených
-klíčů
+klíčů.
 \item Sloupce cizích klíčů mají název ve tvaru \lstinline!model_id!,
-např. \lstinline!project_id!
-\item Některé názvy sloupců rezervované pro ActiveRecord, především se jedná o sloupec \lstinline!type!
+např. \lstinline!project_id!.
+\item Některé názvy sloupců jsou rezervované pro ActiveRecord, především se jedná o sloupec \lstinline!type!
 používaný pro dědění v rámci jedné tabulky (Single Table Inheritance
 \citep[str. 278]{Fowler2003})
 \end{itemize}
@@ -727,18 +727,18 @@ většině případů dodržuje.
 
 Změny v databázi jsou řešené prostřednictvím migrací, což jsou krátké
 skripty, které provádí dílčí změny v databázi -- přidávání / odebírání
-tabulek a sloupců a také mohou měnit existující záznamy. Migrace se
-provádí v pořadí, v jakém byly vytvořeny. Každá má dvě metody:
+tabulek a sloupců, mohou také měnit existující záznamy. Migrace se
+provádí v pořadí, ve kterém byly vytvořeny. Každá má dvě metody:
 \lstinline!up! a \lstinline!down!, což je de facto dopředný a zpětný
 chod. Pokud migrace v metodě \lstinline!up! vytvoří tabulku, metoda
 \lstinline!down! tutéž tabulku smaže. Rails od verze 3 umí k některým
 takovým změnám automaticky přiřadit opačný postup, potom si migrace
 vystačí s jedinou metodou \lstinline!change!.
 
-Charakteristické pro Rails je, že databáze je považována za \uv{hloupé}
-úložiště dat. Integrita dat je řešená primárně na aplikační úrovni,
-ačkoli je možné vedle toho možné v migraci definovat indexy a unikátní
-klíče. ActiveRecord sám o sobě neřeší ani referenční integritu či
+Charakteristické pro Rails je, že databázi považuje jen za \uv{hloupé}
+úložiště dat. Ačkoli je možné v migraci definovat některá omezení a unikátní klíče,
+Rails vyžaduje provádění kontroly dat na aplikační úrovni.
+ActiveRecord sám o sobě neřeší ani referenční integritu či
 kompozitní klíče; jsou-li však takové funkce vyžadovány, v řadě případů
 je doplní rozšíření. Případně lze ActiveRecord zcela nahradit jiným ORM
 frameworkem jako je například DataMapper nebo řada specializovaných
@@ -747,9 +747,9 @@ se zkrátka nesnaží být \uv{stříbrnou kulkou} pro všechny případy.
 
 \subsection{Struktura rozšíření, Rails Engines}
 
-ChiliProject používá systém rozšíření Engines který umožňuje rozšířit
-funkce aplikace prostřednictvímí dílčích \uv{miniaplikací} -- každý
-engine může mít vlastní modely, pohledy a controllery které jsou
+ChiliProject používá systém Engines, který umožňuje rozšířit
+funkce aplikace prostřednictvím dílčích \uv{miniaplikací} -- každý
+engine může mít vlastní modely, pohledy a controllery, které jsou
 v běžící aplikaci integrovány do jediného celku s vlastními komponentami
 aplikace. Engines je standardní součást Ruby on Rails od verze 3.1.
 Z toho důvodu už původní modul není vyvíjený, nicméně ChiliProject jej
@@ -762,34 +762,34 @@ nahrazovat výchozí pohledy -- zde však samozřejmě nastává problém, pokud
 více rozšíření potřebuje nahradit stejný pohled. Proto má ChiliProject
 systém zpětných volání, tzv. hooks\footnote{\url{http://www.redmine.org/projects/redmine/wiki/Hooks}}.
 Ty se většinou volají z pohledů, ale v ojedinělých případech jsou
-použité i v controlleru či v modelu.
+použity i v controlleru či v modelu.
 
-Vedle toho mají rozšíření k dispozici standardní mechanizmy zpětných
-volání, které poskytují volání. Například filtry v controlleru které se
+Vedle toho mají rozšíření k dispozici standardní mechanismy zpětných volání.
+Například filtry v controlleru, které se
 zavolají před provedením akce\footnote{Eventuálně po provedení či v obou
   případech,
-  \url{http://apidock.com/rails/v2.3.8/ActionController/Filters/ClassMethods}}
--- často se používají pro autorizaci přístupu a k načtení dat pro
+  \url{http://apidock.com/rails/v2.3.8/ActionController/Filters/ClassMethods}}. Ty se
+často používají pro autorizaci přístupu a k načtení dat pro
 pohled. Obdobný systém existuje i pro modely, rozšíření se může nechat
 zavolat například po vytvoření nového záznamu, uložení změn či před
 validací\footnote{\url{http://apidock.com/rails/v2.3.8/ActiveRecord/Callbacks}}.
 
 Celkově je na systému rozšíření pro ChiliProject zajímavé, jak málo
 funkcí řeší samotná aplikace. Většinu potřeb rozšíření obstará samotné
-Ruby ve spolupráci s Rails. Je to příjemný rozdíl oproti například PHP
-kde řada aplikací spoléhá čistě na systém explicitních zpětných volání
--- pokud volání není na místě které potřebujete, jedinou možností je
+Ruby ve spolupráci s Rails. Je to příjemný rozdíl například oproti PHP,
+kde řada aplikací spoléhá čistě na explicitní systém událostí
+a zpětných volání -- pokud událost není na správném místě, jedinou možností je
 většinou zásah do jádra aplikace.
 
 \subsection{Struktura testů}
-
 \label{sec:rails_tests}
 
 Jak už jsem dříve naznačil, Ruby je dynamický jazyk ad absurdum.
-U složitějších aplikací je prakticky nemožné odhadnout jak se budou chovat
-vzhledem k tomu, že nemalá část logiky vzniká až za běhu programu. I to
-je zřejmě jeden z důvodů proč komunita Ruby investuje nemalé úsilí do
-testování kódu; jedinou zárukou funkčnosti programu je jeho úspěšný běh.
+U složitějších aplikací je prakticky nemožné odhadnout, jak se budou chovat
+-- nemalá část logiky vzniká až za běhu programu. I to
+je zřejmě jeden z důvodů, proč komunita Ruby investuje nemalé úsilí do
+testování kódu; není zde žádný překladač, který mnohdy odchytí nejhrubější chyby
+v logice programu. Jedinou zárukou funkčnosti programu je jeho úspěšný běh.
 Ve skutečnosti každý vývojář testuje svou aplikaci, byť manuálně.
 Automatizované testy vypadají jako zbytečná práce navíc, s narůstající
 komplexitou aplikace se však začne rychle vyplácet \citep{Rappin2011}.
@@ -803,22 +803,22 @@ aplikace pomocí různých \lstinline!assert! metod (assertions). Pokud
 namísto očekávaného \lstinline!true!), test neprošel.
 
 Rails řadí testy do několika kategorií -- zjednodušeně lze říct, že
-kategorizace je dána typem třídy, která je testovaná.
+kategorizace je dána typem testované třídy.
 
 \begin{itemize}
 \item
   Jednotkové (unit) testy slouží pro testování modelů a helperů.
 \item
   Funkcionální (functional) testy slouží pro testování controllerů a
-  mohou testovat i pohledy.
+  případně pohledů.
 \item
   Integrační (integration) testy prověřují aplikaci jako celek tím, že
   simulují chování uživatele.
 \end{itemize}
-Vedle toho někteří vývojáři pracují s akceptačními (acceptance) testy
+Vedle toho někteří vývojáři pracují s akceptačními (acceptance) testy,
 které by měly ověřit, zda funkčnost aplikace vyhovuje požadavkům
 zadavatele. Zde se často používá framework Cucumber\footnote{\url{http://cukes.info/}};
-chování aplikace se popisuje v rámci tzv. features kde jsou jednotlivé
+chování aplikace se popisuje v rámci tzv. features, kde jsou jednotlivé
 scénáře rozepsány v jazyce Gherkin -- ten záměrně vypadá jako přirozený
 jazyk, ačkoli se jedná o \gls{DSL}. Záměr je takový, že specifikace pro
 Cucumber je čitelná pro netechnického uživatele, což by mělo usnadnit
