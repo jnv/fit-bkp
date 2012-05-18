@@ -42,13 +42,17 @@
 \author{Jan Vlnas} %jméno autora bez akademických titulů
 \authorWithDegrees{Jan Vlnas} %jméno autora včetně akademických titulů
 \supervisor{Ing. Tomáš Kadlec}
-%\acknowledgements{Doplňte, máte-li komu a za co děkovat. V opačném případě úplně odstraňte tento příkaz.}
-\abstractCS{}
-\abstractEN{}
+\abstractCS{Práce se zabývá modifikací systému \emph{ChiliProject} (navazujícího na systém \emph{Redmine}) prostřednictvím modulů. Porovnává některé open~source webové aplikace pro správu projektů, analyzuje specifika platformy \emph{Ruby on Rails} a zabývá se návrhem, implementací a testováním \emph{rozšíření} existující aplikace bez zásahu do jejího kódu.
+Výsledkem práce je několik rozšíření, která mj. decentralizují správu uživatelských rolí a umožňují omezit přístup ke konkrétním zdrojům.
+}
+\abstractEN{This thesis focuses on modification of \emph{ChiliProject} (forked from \emph{Redmine}) through a set of plug-ins.
+The thesis evaluates open~source web applications for project management, analyses some specific aspects of \emph{Ruby on Rails} platform and describes design, implementation, and testing of plug-ins for the existing application.
+The resulting plug-ins provide decentralized user roles management, access restriction for particular resources, and more.
+}
 \placeForDeclarationOfAuthenticity{V Praze}
 \declarationOfAuthenticityOption{4} %volba Prohlášení
-\keywordsCS{ruby, redmine, chiliproject, tdd, rails}
-\keywordsEN{ruby, redmine, chiliproject, tdd, rails}
+\keywordsCS{správa projektů, }
+\keywordsEN{project management, ruby, redmine, chiliproject, rails, plugin, extension, module, test, monkey patching}
 
 \renewcommand\lstlistingname{Ukázka kódu}
 \renewcommand\lstlistlistingname{Ukázky kódu}
@@ -126,7 +130,7 @@ name=fixtures,
 description={Metoda fixování testovacích dat, viz \autoref{sec:rails_tests}}
 } \newglossaryentry{plugin}{
 name=rozšíření,
-description={Plug-in, add-on, extension, module -- kód který rozšiřuje funkčnost aplikace bez potřeby její úpravy}
+description={Plug-in, zásuvný modul -- kód který rozšiřuje funkčnost aplikace bez potřeby její úpravy}
 }
 \newglossaryentry{callback}{
 name=zpětné volání,
