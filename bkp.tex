@@ -159,7 +159,7 @@ description={YAML Ain't Markup Language -- textový formát pro serializaci dat,
 
 Oddělení \glslink{ICT}{ICT} \glslink{FIT}{Fakulty informačních technologií} má na starost správu softwarového i hardwarového vybavení. Zajišťuje funkčnost fakultních informačních systémů i různých zařízení (tiskárny, počítače v~učebnách). To znamená sledovat a řešit velké množství různých požadavků, od přidání opravy do systému Edux po výměnu toneru v~tiskárnách. Správu požadavků by měl usnadnit jednotný systém pro správu projektů. Takový systém může podporovat i sdílení znalostí (např. v~rámci \gls{wiki}) a správu kódu.
 
-Pro správu projektů oddělení používá systém Redmine\footnote{\url{http://www.redmine.org/}}, který splňuje většinu jejich potřeb. Redmine má však určité nedostatky z~hlediska správy většího množství projektů a uživatelů.
+Pro správu projektů oddělení používá systém Redmine,\footnote{\url{http://www.redmine.org/}} který splňuje většinu jejich potřeb. Redmine má však určité nedostatky z~hlediska správy většího množství projektů a uživatelů.
 
 \subsection{Cíl práce}
 
@@ -217,7 +217,7 @@ stávající stav. Například role \emph{vývojář} může změnit úkol, kter
 specifikem je, že stránky mohou být uspořádány v~hierarchii -- nejedná
 se však o~kompletní podporu \gls{namespace}, jak ji chápe software
 MediaWiki\footnote{\url{http://www.mediawiki.org/}} či
-DokuWiki\footnote{\url{http://www.dokuwiki.org/}}. Hierarchie má význam
+DokuWiki.\footnote{\url{http://www.dokuwiki.org/}} Hierarchie má význam
 pouze pro navigaci v~rozsáhlejší struktuře stránek.
 
 Redmine, jakožto systém určený především pro správu softwarových
@@ -306,9 +306,9 @@ aplikací má navíc specializované funkce pro správu softwarových
 projektů.
 
 Některé nástroje se orientují výhradně na jeden aspekt -- typickým
-příkladem je samostatný \gls{bug tracker}\footnote{Například Bugzilla --
-  \url{http://www.bugzilla.org/}}, který nabízí pouze správu úkolů, pro
-další funkce je nutné použít externí aplikace. Řada takových nástrojů má
+příkladem je samostatný \gls{bug tracker}, který nabízí pouze správu úkolů,
+\footnote{Například Bugzilla -- \url{http://www.bugzilla.org/}}
+pro další funkce je nutné použít externí aplikace. Řada takových nástrojů má
 unikátní vlastnosti a jejich kombinací lze dosáhnout zajímavých
 možností. Nevýhodou je pak samozřejmě roztříštěnost konfigurace a
 rozhraní, z~čehož vyplývá náročnější správa a vyšší nároky na uživatele.
@@ -320,7 +320,7 @@ posuzovaná aplikace musí splňovat.
 
 \begin{description}
 \item[Webová aplikace]
-  Ačkoliv distribuované nástroje\footnote{Jako je například Ditz -- \url{http://ditz.rubyforge.org/}} mají své kouzlo,
+  Ačkoliv distribuované nástroje\footnote{Jako je třeba Ditz -- \url{http://ditz.rubyforge.org/}} mají své kouzlo,
   nelze po uživatelích vyžadovat instalaci software, aby mohli hlásit
   chyby.
 \item[Samostatně hostovaná]
@@ -822,7 +822,7 @@ kategorizace je dána typem testované třídy.
 \end{itemize}
 Vedle toho někteří vývojáři pracují s~akceptačními (acceptance) testy,
 které by měly ověřit, zda funkčnost aplikace vyhovuje požadavkům
-zadavatele. Zde se často používá framework Cucumber\footnote{\url{http://cukes.info/}};
+zadavatele. Zde se často používá framework Cucumber;\footnote{\url{http://cukes.info/}}
 chování aplikace se popisuje v~rámci tzv. features, kde jsou jednotlivé
 scénáře rozepsány v~jazyce Gherkin -- ten záměrně vypadá jako přirozený
 jazyk, ačkoliv se jedná o~\gls{DSL}. Záměr je takový, že specifikace pro
@@ -833,7 +833,7 @@ v~přestrojení,} zbytečně dlouhé, hůře strukturované, a přesto pro
 klienta nečitelné.
 
 ChiliProject používá Test::Unit v~kombinaci s~knihovnou
-Shoulda\footnote{\url{https://github.com/thoughtbot/shoulda}}. Ta
+Shoulda.\footnote{\url{https://github.com/thoughtbot/shoulda}} Ta
 zahrnuje dvě funkce: jednak přidává další užitečné \lstinline!assert!
 metody, jednak přidává podporu pro kontext -- ten umožňuje sdílení stavu
 mezi jednotlivými testy. Zatímco Test::Unit umožňuje připravit sdílený
@@ -880,7 +880,7 @@ aplikace se komplikuje i jejich struktura. Proto se místo toho většinou
 používají generátory dat (data factories), které vytvoří požadované
 objekty -- včetně závislostí -- až když jsou zapotřebí. ChiliProject
 používá oba přístupy, pro generování dat používá knihovnu
-ObjectDaddy\footnote{\url{https://github.com/edavis10/object_daddy}}.
+ObjectDaddy.\footnote{\url{https://github.com/edavis10/object_daddy}}
 
 Další technikou, byť v~ChiliProjectu ne příliš používanou, jsou tzv.
 mock objekty. S~tím často souvisí i tzv. stubs, pro podrobnosti viz
@@ -1341,9 +1341,9 @@ otevřel správu projektových skupin. Systém se v~administraci globálních
 skupin \mbox{nepokoušel} načíst z~databáze projektové skupiny, pokud jejich
 třída nebyla předtím použita. To je důsledek cachování tříd, ovšem tato funkce je
 ve vývojovém režimu Rails vypnutá, aby nebylo nutné restartovat
-aplikační server při každé změně kódu\footnote{Novější verze Rails navíc
+aplikační server při každé změně kódu.\footnote{Novější verze Rails navíc
   detekují změny v~souborech a obnovují jen ty třídy, které byly
-  změněny.}.
+  změněny.}
 
 \subsection{Zhodnocení}
 
@@ -1574,7 +1574,7 @@ vidět obsah stránky.
 \subsection{Existující řešení}
 
 V~tomto případě už existuje poměrně funkční řešení v~podobě rozšíření
-Redmine Private Wiki\footnote{\url{https://github.com/f0y/redmine_private_wiki}},
+Redmine Private Wiki,\footnote{\url{https://github.com/f0y/redmine_private_wiki}}
 které napsal Oleg Kandurov. Autor ovšem nespecifikoval licenci. Po
 ujištění, že je kód dostupný pod permisivní MIT licencí (která byla
 zachována), jsem vytvořil \gls{fork} rozšíření, obligátně nazvaný
@@ -1594,8 +1594,8 @@ upraveno pomocí JavaScriptu -- pohledy bohužel nemají dostatek zpětných
 volání, aby je bylo možné rozšířit na straně serveru. O~přístupnosti pro
 uživatele s~vypnutým JavaScriptem však beztak nelze hovořit, protože
 samotný framework Rails vyžaduje JavaScript i pro běžnou uživatelskou
-interakci\footnote{Rails 3 používá \uv{unobtrusive JavaScript}
-  což tento problém z~velké části řeší.}.
+interakci.\footnote{Rails 3 používá \uv{unobtrusive JavaScript}
+  což tento problém z~velké části řeší.}
 
 \begin{figure}[tbp]
 \centering
@@ -1672,7 +1672,7 @@ obdobně jako s~přístupem je to i s~viditelností úkolu v~přehledu úkolů.
 \label{sec:private_issues_exist}
 
 V~této oblasti je Redmine napřed -- viditelnost úkolů je možné určit od
-verze 1.2\footnote{\url{http://www.redmine.org/issues/7414}}.
+verze 1.2.\footnote{\url{http://www.redmine.org/issues/7414}}
 ChiliProject tuto funkci neimplementoval s~odvoláním na to, že systém
 oprávnění bude beztak zapotřebí kompletně přepracovat,\footnote{\url{https://www.chiliproject.org/issues/189}}
 bohužel se tato iniciativa zatím nedostala moc daleko. Implementace
