@@ -838,7 +838,7 @@ metody, jednak přidává podporu pro kontext -- ten umožňuje sdílení stavu
 mezi jednotlivými testy. Zatímco Test::Unit umožňuje připravit sdílený
 stav mezi všemi testy v rámci jednoho test case pomocí metody
 \lstinline!setup!, kontext umožňuje test case dále rozčlenit do menších
-částí, které mohou mít svůj vlastní sdílený stav. Výhodou je,
+částí, jenž mají svůj vlastní stav a neovlivňují ostatní testy. Výhodou je,
 že jednotlivé testy mohou být kratší, a tím pádem je snazší
 identifikovat problematické chování. Kromě toho Shoulda nahrazuje metody
 test popisnějším makrem \lstinline!should!. Pro praktický příklad viz \autoref{lst:shoulda}.
@@ -871,9 +871,9 @@ class UserTest < ActiveSupport::TestCase
 end
 \end{lstlisting}
 
-Testy potřebují mít k dispozici data na kterých bude prověřována
+Testy musí mít k dispozici data, na kterých bude prověřována
 funkčnost aplikace. Rails standardně podporují tzv. fixtures, což jsou
-serializovaná data (nejčastěji ve formátu \gls{YAML}, což je činní
+serializovaná data (nejčastěji ve formátu \gls{YAML}, jenž je činní
 snadno editovatelnými), která jsou před provedením testů načtena do
 databáze. Fixtures musí být průběžně udržovány a s rostoucí komplexností
 aplikace se komplikuje i jejich struktura. Proto se místo toho většinou
@@ -900,9 +900,9 @@ nesmírně důležitá. Představuje konvenci na které mohou stavět testy
 jednotlivých rozšíření. Zároveň je možné testovat integraci rozšíření,
 zda jejich nasazení nenaruší standardní funkce systému.
 
-Ožehavá otázka je: Co všechno testovat? Obligátní odpověď \uv{všechno}
-v praxi neobstojí, a ani by to neměl být hlavní cíl testů. Jak podotýká
-D.H.H. \citep{HanssonTestingTSA}, testy představují kód který se
+Ožehavá otázka: \uv{Co všechno testovat?} Obligátní odpověď \uv{všechno}
+v praxi neobstojí a ani by to neměl být hlavní cíl testů. Jak podotýká
+D.H.H. \citep{HanssonTestingTSA}, testy představují kód, který se
 také musí udržovat, jinými slovy: nejsou zadarmo. Cílem by nemělo být
 100\% pokrytí kódu a rozhodně by psaní testů nemělo zabírat více času
 než psaní samotné aplikace. Z hlediska dlouhodobé udržitelnosti je lepší
@@ -916,13 +916,13 @@ samotné aplikaci 3:1, není to zárukou bezchybnosti.
 Požadované funkce mohou být implementované dvěma způsoby: úpravou
 samotné aplikace ChiliProject nebo v rámci individuálních rozšíření.
 Tyto možnosti se vzájemně nevylučují, do jádra by mohly být přidané
-pouze některé funkce, i tak by tato možnost měla jisté následky.
+pouze některé funkce, i tak by ale tato cesta měla jisté následky.
 
 Modifikace jádra představuje odštěpení od hlavní vývojové větve,
 \gls{fork}. Je nutné sledovat změny v originální aplikaci a hrozí, že
 dojde ke konfliktům mezi forkem a originální aplikací. Integrované
 funkce je obtížné vzájemně odlišit a vyextrahovat v případě, že by byla
-zapotřebí pouze jejich část. Výhodou je potenciálně \uv{čistší}
+zapotřebí pouze jejich část. Výhodou je naopak potenciálně \uv{čistší}
 implementace změn s menší duplikací kódu.
 
 Naproti tomu rozšíření se vždy nasazují na oficiální verzi aplikace.
@@ -935,7 +935,7 @@ odpovídá daná organizace.
 
 Mým cílem bylo veškeré požadované funkce implementovat jako rozšíření --
 jak jsem již rozebral, jsou to především vlastnosti jazyka Ruby, které
-umožnily tohoto cíle dosáhnout. V jediném případě jsem se nevyhnul
+umožnily tohoto cíle dosáhnout. Jen v jediném případě jsem se nevyhnul
 zásahu do originální aplikace, podrobněji viz
 \ref{sec:oprava-engines}.
 
@@ -952,7 +952,7 @@ výzvou však bude udržovat krok s novými verzemi Ruby.
 
 Rozšíření byla testovaná s vývojovou verzí ChiliProject 3.2.0,
 pravděpodobně by však s menšími úpravami mohla být kompatibilní jak se
-staršími verzemi, tak se sytémem Redmine.
+staršími verzemi, tak se systémem Redmine.
 
 \chapter{Návrh a implementace rozšíření}
 
@@ -965,20 +965,20 @@ nezávisle na ostatních; sdílené či vzájemně se překrývající části k
 mohou být vyjmuté do samostatného rozšíření.
 
 \begin{enumerate}
-\item Správa uživatelských skupin na úrovni projektů (\ref{sec:project_group}),
+\item Správa uživatelských skupin na úrovni projektů (\ref{sec:project_group});
 \item správa rolí na úrovni projektů, úzce souvisí i s \gls{workflow}, výsledné rozšíření zahrnuje i
-správu workflow pro role na úrovni projektů (\ref{sec:project_roles}),
-\item wiki stránky s omezenou přístupností (\ref{sec:private_wiki}),
-\item úkoly s omezenou přístupností (\ref{sec:private_issues}),
+správu workflow pro role na úrovni projektů (\ref{sec:project_roles});
+\item wiki stránky s omezeným přístupem (\ref{sec:private_wiki});
+\item úkoly s omezeným přístupem (\ref{sec:private_issues});
 \item přidávání uživatelů z \gls{LDAP} (\ref{sec:add_ldap_users}).
 \end{enumerate}
 
 Tato rozšíření jsem zahrnul do hlavního repozitáře
-\emph{chiliproject-fit} společně s aplikací ChiliProject lehce
+\emph{chiliproject-fit} společně s aplikací ChiliProject, lehce
 přizpůsobenou pro testování (nejedná se však o funkční zásahy do jádra)
 
 Každé rozšíření pracuje s odlišnými částmi systému ChiliProject, proto
-se návrhu a implemenaci věnuji pro každé rozšíření zvlášť. Některé
+se návrhu a implementaci věnuji pro každé rozšíření zvlášť. Některé
 základní postupy přitom zůstávají pro každé rozšíření stejné.
 
 \section{Příprava testovacího prostředí}
@@ -993,31 +993,31 @@ jeho stabilitu. Po vzoru metodiky \gls{TDD} je tak možné psát testy
 současně s funkčním kódem. Zároveň je v průběhu vývoje možné využívat
 \gls{CI}.
 
-Protože veškerý kód v této práci je open source, rozšíření
-jsou od začátku hostovaná ve veřejných repozitářích na serveru GitHub.
-Není to pouze otázka osobní preference, existuje řada nezávislých služeb
-které nabízí projektům na GitHubu užitečné funkce navíc.
-V tomto případě jsem se rozhodl využít službu Travis-CI\footnote{\url{http://travis-ci.org/}},
-která nabízí hostované řešení pro \gls{CI} open source projekty zcela zdarma.
+Protože veškerý kód v této práci je pod open-source licencemi,
+je od začátku hostovaný ve veřejných repozitářích na serveru GitHub.
+Není to pouze otázka osobní preference, existuje řada nezávislých služeb,
+které nabízí projektům na GitHubu užitečné funkce navíc. Konkrétně
+v tomto případě jsem se rozhodl využít službu Travis-CI\footnote{\url{http://travis-ci.org/}},
+která poskytuje hostované řešení \gls{CI} pro open-source projekty zcela zdarma.
 
-Travis-CI funguje následovně: ze serveru GitHub přijde oznámení, že v cílovém
-repozitáři přibyl nový \gls{commit} (přes tzv. post-commit hook). Služba
+Travis-CI funguje následovně: ze serveru GitHub dostane oznámení, že v cílovém
+repozitáři přibyl nový \gls{commit} (přes tzv. post-commit hook). Travis
 spustí \emph{build}: vytvoří virtuální stroj, stáhne do něj repozitář
-s kódem, nainstaluje potřebné knihovny, spustí sadu testů. Testy
-vrací návratový kód -- jak je typické pro Unix: \lstinline!0! znamená
-úspěch, jiné číslo je neúspěch. Travis-CI kontroluje tento návratový kód a
+s kódem, nainstaluje potřebné knihovny a spustí sadu testů. Ty typicky
+vrací návratový kód -- jak je zvykem v Unixu: \lstinline!0! znamená
+úspěch, jiné číslo neúspěch. Travis kontroluje tento návratový kód a
 podle toho označí build jako úspěšný či neúspěšný. Průběh buildu je
 možné sledovat v reálném čase přes webové rozhraní.
 
 Použití \gls{CI} má několik výhod. Je zde jednodušší provádět časově
 náročné testy (provedení celé testovací sady ChiliProjectu trvá 15
-minut!). Také je jednodušší provádět kombinovat různé vlastnosti
-prostředí, testy lze provádět například s různými databázovými systémy
+minut!) Také je jednodušší kombinovat různé vlastnosti
+prostředí; testy lze provádět například s různými databázovými systémy
 či jinými verzemi Ruby -- kombinací těchto variant vznikne matice, tzv.
 \emph{build matrix}. Má-li aplikace podporovat tři různé databázové systémy
 a tři verze interpreta, představuje to devět různých buildů -- testovat
 něco manuálně by bylo přinejmenším obtížné. Hostovaná služba je pak
-samozřejmě výhodná protože vyžaduje minimální konfiguraci -- do
+samozřejmě výhodná, neboť vyžaduje minimální konfiguraci -- do
 repozitáře zpravidla stačí přidat konfigurační soubor a aktivovat
 post-commit hook. Výsledek buildu je veřejně přístupný, může tak sloužit
 jako základní indikátor pro vývojáře i uživatele, zda je aktuální
@@ -1040,7 +1040,7 @@ Druhý případ je složitější -- rozšíření bez aplikace, kterou rozšiř
 nelze spustit, natož testovat. Tento problém řešili vývojáři systému
 Radiant \citep{Muhl2012}. Před testováním se provede skript, který
 stáhne samotnou aplikaci a přesune do ní (již stažené) rozšíření. Skript
-jsem přizpůsobil pro ChiliProject a zobecnil jsem jej, aby byl snadněji
+jsem přizpůsobil pro ChiliProject a zobecnil jsem jej tak, aby byl snadněji
 konfigurovatelný pro další rozšíření. Kostrou tohoto řešení je rozšíření
 \lstinline!chiliproject_test_plugin! které posloužilo jako prototyp
 k odladění.
@@ -1051,13 +1051,13 @@ problém.
 \section{Oprava Engines}
 \label{sec:oprava-engines}
 
-Rozšíření pro ChiliProject využívají jsou postavená na modulu Engines --
-využívají jej i testy. Rozšíření zpravidla potřebuje mít k dispozici
+Rozšíření pro ChiliProject jsou postavená na modulu Engines a
+využívají jej i testy. Rozšíření zpravidla používá
 \gls{fixtures} originální aplikace, zároveň může soubory fixtures
 přidávat nebo i nahrazovat. Engines to řeší tak, že postupně zkopíruje
 soubory z původní aplikace a z rozšíření do dočasného adresáře, cestu
-k tomuto adresáři pak přidá na začátek globální proměnné
-\lstinline!$LOAD_PATH!. To zaručí že se vždy načtou fixtures z tohoto
+k němu pak přidá na začátek globální proměnné
+\lstinline!$LOAD_PATH!. To zaručí, že se fixtures načtou z tohoto
 adresáře.
 
 V Ruby 1.9 se však změnila specifikace standardní funkce pro vytvoření
@@ -1066,16 +1066,16 @@ vrací pole. Engines (v modulu \lstinline!Engines::Testing!) přidávají
 výstup této funkce bez další kontroly do proměnné \lstinline!$LOAD_PATH!
 -- pod Ruby 1.9 se tak v této proměnné ocitne pole, což zcela zmate
 systém načítání závislostí. Volání funkce \lstinline!require! (pro
-načtení souboru) způsobí pád testů.
+načtení souboru) pak způsobí pád testů.
 
-Oprava této chyby byla poměrně banální, největším problémem bylo jí
+Oprava této chyby byla poměrně banální, největším problémem bylo ji
 nalézt a otestovat -- testy Engines jsou pod Ruby 1.9 zcela nefunkční.
 Výsledkem je opravený \gls{fork} modulu \lstinline!engines!, který jsem
 zahrnul do distribuce \emph{chiliproject-fit}. Problém byl
-nahlášený vývojářům ChiliProject, bohužel oprava dosud nebyla zahrnutá
+nahlášený vývojářům ChiliProject, bohužel oprava dosud nebyla zahrnuta
 do oficiální verze\footnote{\url{https://www.chiliproject.org/issues/952}}.
 
-S funkčním testovacím prostředí bylo možné začít implementovat
+S funkčním testovacím prostředí už bylo možné začít implementovat
 jednotlivá rozšíření.
 
 \section[Správa uživatelských skupin na úrovni projektů]{Správa uživatelských skupin na úrovni projektů (ChiliProject
@@ -1087,7 +1087,7 @@ Project Group)}
 Cílem tohoto rozšíření je decentralizovat správu uživatelských skupin
 tak, aby se jejich vytváření a modifikace obešla bez zásahu
 administrátora. Jako nejvhodnější možnost se nabízí navázání skupin na
-projekt, kde s nimi bude moct pracovat správce projektu.
+projekt, kde už s nimi bude moct pracovat správce projektu.
 
 Správce projektu s oprávněním pro modifikaci projektových skupin může:
 
@@ -1104,24 +1104,24 @@ Správce projektu s oprávněním pro správu členů projektu může:
 \begin{enumerate}[1.]
 \setcounter{enumi}{3}
 \item
-  přiřadit skupině roli v projektu; příslušnou roli dostanou všichni
+  Přiřadit skupině roli v projektu; příslušnou roli dostanou všichni
   členové skupiny.
 \end{enumerate}
 Projektové skupiny jsou k dispozici všem podprojektům (lze jim přiřadit
 roli -- požadavek 4), nelze je ale v rámci podprojektu modifikovat
 (požadavky 1 až 3).
 
-Nadále bude možné používat standardní funkci globálních skupin které
+Nadále bude možné používat i standardní funkci globálních skupin, které
 jsou k dispozici všem projektům a může je modifikovat pouze
 administrátor.
 
 \subsection{Existující řešení}
 
 Některé z požadavků částečně splňuje rozšíření Group Assignee\footnote{\url{http://www.redmine.org/plugins/groupsassignee}},
-které umožňuje přiřadit skupině zodpovědné osoby jenž mohou přiřazovat a
-odebírat členy. Ačkoliv to částečně řeší decentralizaci správy, stále je
-nutné aby administrátor skupiny nadefinoval. Navíc všechny skupiny stále
-existují v globálním konextu, což při jejich větším množství povede
+které umožňuje přiřadit skupině zodpovědné osoby, jenž mohou přiřazovat a
+odebírat členy. Ačkoli to částečně řeší decentralizaci správy, stále je
+nutné, aby administrátor skupiny nadefinoval. Navíc všechny skupiny stále
+existují v globálním kontextu, což při jejich větším množství vede
 k nepřehlednosti.
 
 \subsection{Systém uživatelů, skupin a rolí}
@@ -1131,11 +1131,11 @@ k nepřehlednosti.
 ChiliProject řeší správu uživatelů prostřednictvím tří modelů:
 
 \begin{description}
-\item[Principal] je abstraktní třída která seskupuje společné metody
-  uživatele \mbox{a skupin}
+\item[Principal] je abstraktní třída, která seskupuje společné metody
+  uživatele \mbox{a skupin}.
 \item[User] je podtřída Principal a představuje konkrétního
-  uživatele
-\item[Group] je podtřída Principal, může mít více uživatelů
+  uživatele.
+\item[Group] je podtřída Principal, která může mít více uživatelů.
 \end{description}
 
 \begin{figure}[htbp]
@@ -1144,11 +1144,11 @@ ChiliProject řeší správu uživatelů prostřednictvím tří modelů:
 \caption{Vztah modelů Principal, User a Group}
 \end{figure}
 
-Model Principal se používá v případech kdy nezáleží, zda pracujeme
+Model Principal se používá v případech, kdy nezáleží na tom, zda pracujeme
 s uživateli či skupinami, například při přidávání členů projektu.
 
 Přidáním uživatele (skupiny) do projektu vzniká člen (Member). Každý
-člen projektu může mít více rolí, dekompozicí této relace je model
+člen projektu může mít více rolí; dekompozicí této relace je model
 \mbox{MemberRole}.
 
 \begin{figure}[htbp]
@@ -1158,16 +1158,16 @@ Přidáním uživatele (skupiny) do projektu vzniká člen (Member). Každý
 \end{figure}
 
 Při přidání skupiny do projektu se reálně přidají členové skupiny jako
-členové projektu, ChiliProject mezi takto \uv{zděděnými} uživateli a
+členové projektu. ChiliProject mezi takto \uv{zděděnými} uživateli a
 individuálně přidanými uživateli rozlišuje na úrovni modelu MemberRole
 prostřednictvím atributu \lstinline!inherited_from!, který odkazuje na
 původní záznam MemberRole skupiny. Tento model nevypadá příliš
-elegantně, na druhou stranu tím, že je dědičnost určená pro každou
-členskou roli, je tak možné řešit i poměrně složité situace. Například
-je do do projektu přidán tentýž uživatel jednou přímo, a podruhé v rámci
-skupiny. V tomto modelu si zachová jak svou původní roli, tak zdědí roli
-skupiny. Pokud bude skupina z projektu později odebraná, uživatel pouze
-přijde o dvou roli. Pokud člen nemá v projektu žádnou roli, je jeho
+elegantně, ale na druhou stranu tím, že je dědičnost určená pro každou
+členskou roli, je pak možné řešit i poměrně složité situace. Například
+když je do projektu přidán tentýž uživatel jednou přímo a podruhé v rámci
+skupiny. V tomto systému si zachová jak svou původní roli, tak zdědí roli
+skupiny. Pokud bude skupina z projektu později odebrána, uživatel
+přijde pouze o svou roli. Pokud člen nemá v projektu žádnou roli, je jeho
 záznam po odebírání poslední role odstraněn.
 
 \subsection{Model projektové skupiny}
@@ -1183,13 +1183,13 @@ podtřídou modelu Group. Zároveň patří (belongs to) rodičovskému projektu
 \caption{Model ProjectGroup}
 \end{figure}
 
-Díky dědičnosti nemusí rozšíření řešit přidávání správu členství
+Díky dědičnosti nemusí rozšíření řešit přidávání a správu členství
 v projektech -- o to se postará standardní implementace třídy Group a
 polymorfismus.
 
 Model Project v tomto vztahu má mnoho (has many) projektových skupin.
 Také je zde nutné upravit asociaci \lstinline!member_principals! která
-představuje všechny uživatele a skupiny jenž jsou členy daného projektu.
+představuje všechny uživatele a skupiny, jenž jsou členy daného projektu.
 ChiliProject zde vybírá konkrétní typy záznamů prostřednictvím sloupce
 \lstinline!type! -- do podmínky je proto nutné zahrnout i typ
 ProjectGroup.
@@ -1205,12 +1205,12 @@ definici, proto bude asociace definovaná v rozšíření brána v potaz.
 
 Větší problém je s validátory, které se řetězí -- vícenásobná definice
 validace na stejný atribut pouze přidá další \gls{callback} na konec
-seznamu validací. To však vadí pokud chceme z rozšíření nastavit méně
+seznamu validací. To však vadí, pokud chceme z rozšíření nastavit méně
 přísné podmínky platnosti záznamu -- v tomto případě se jedná
 o unikátnost názvu skupiny. Standardně musí mít každá skupina unikátní
-název; u projektové skupiny však stačí mít unikátní název v rámci daného
-projektu. Naštěstí jsem nebyl první kdo podobný problém řešil
-\citep{McAlpin2011} -- výsledek není moc pěkný ale je ukázkou síly
+název; u projektové skupiny však stačí, aby její název byl unikátní pouze v rámci daného
+projektu. Naštěstí jsem nebyl první, kdo podobný problém řešil
+\citep{McAlpin2011} -- výsledek není moc pěkný, ale je ukázkou síly
 metaprogramování v Ruby.
 
 Na model Group se při inicializaci aplikuje toto volání:
@@ -1229,18 +1229,18 @@ end
 \end{lstlisting}
 Z třídní proměnné \lstinline!validate_callbacks! se odstraní ta validace
 pro atribut \lstinline!lastname!, která má možnost
-\lstinline!case_sensitive! nastavenou na \lstinline!false! -- pokud pro
+\lstinline!case_sensitive! nastavenou na \lstinline!false! -- pokud je pro
 tento atribut definováno více validací, poslední kontrola zaručuje, že
 se odstraní pouze kontrola unikátnosti (jiné validace s volbou
 \lstinline!case_sensitive! nepracují). Následně se definuje nová
 validace omezená na konkrétní projekt; globální skupiny nemají projekt
-určený a tím pádem se budou také validovat se stejným omezením -- je tak
+určený, a tím pádem se budou také validovat se stejným omezením -- je tak
 zachována podmínka unikátnosti názvů globálních skupin.
 
 \subsubsection{Dědění skupin v hierarchii projektů}
 \label{sec:proj_group_inherit}
 
-Pro splnění požadavku dědičnosti skupin do podprojektů se nabízí dvě
+Pro splnění požadavku dědění skupin do podprojektů se nabízí dvě
 řešení. Buď se bude relace mezi skupinami a podprojekty udržovat
 v databázi, nebo se zděděné skupiny určí spojením projektů se skupinami a
 určí se z hierarchie projektů.
@@ -1294,8 +1294,8 @@ jednou; nový projekt nemůže mít žádného potomka.
 \subsection{Manipulace se skupinami, autorizace}
 
 Aby bylo možné projektové skupiny spravovat, je pro ně nutné vytvořit
-administrační rozhraní. Zde lze vyjít ze standardní správy skupin kterou
-ChiliProject.
+administrační rozhraní. Zde lze vyjít ze standardní správy skupin, kterou
+ChiliProject obsahuje.
 
 \begin{figure}[tbp]
 \centering
@@ -1305,24 +1305,24 @@ ChiliProject.
 
 Správa skupin je umístěná v nastavení projektu -- zde je možné prohlížet
 projektové skupiny, které má daný projekt k dispozici, a vytvářet nové.
-Patří-li skupina tomuto projektu, je možné jí upravovat (přidávat
+Patří-li skupina tomuto projektu, je možné ji upravovat (přidávat
 uživatele, měnit název). Pokud ne, může si správce pouze zobrazit seznam
 členů této skupiny.
 
-Na záložce Členové v nastavení projektu se projektové skupiny zobrazí
+Na záložce Členové, v nastavení projektu, se projektové skupiny zobrazí
 stejně jako globální skupiny a je možné mezi nimi vyhledávat. K tomu
 však bylo nutné nahradit odpovídající pohled
 \lstinline!projects/settings/members! -- protože totéž bylo nutné
 později provést i pro projektové role, vyextrahoval jsem tento pohled do
-samostatného rozšíření \emph{Members View}
+samostatného rozšíření \emph{Members View},
 které funguje také jako \gls{gem}.
 
 Z hlediska autorizace přidává rozšíření jedno oprávnění: \emph{Manage
 project groups} -- má-li uživatel roli s tímto oprávněním (společně
 s možností spravovat projekt), bude moct pracovat se skupinami v daném
 projektu. K oprávnění se vážou specifické akce controlleru
-ProjectGroupsController, dále se zde kontroluje, zda daná skupina patří
-projektu a je jí tím pádem možné měnit.
+ProjectGroupsController, kde se navíc kontroluje, zda daná skupina patří
+projektu a je ji tím pádem možné měnit.
 
 \subsection{Testy}
 
@@ -1330,27 +1330,27 @@ Testy pokrývají především funkčnost controllerů (včetně autorizace),
 patchů a složitějších operací s modely, jako je například zmíněná změna
 hierarchie projektů.
 
-Je zde určitý překryv mezi funkcionálními a jednotkovými testy, nicméně
-jsem se snažil klást důraz na funkcionální testy které lépe vystihují
+Dochází zde k určitému překryvu mezi funkcionálními a jednotkovými testy, nicméně
+jsem se snažil klást důraz na funkcionální testy, které lépe vystihují
 konečné chování rozšíření.
 
-Jedna chyba se projevila až při nasazení na produkční server:
+Pouze jedna chyba se projevila až při nasazení na produkční server:
 administrace globálních skupin fungovala do té doby, než uživatel jednou
 otevřel správu projektových skupin. Systém se v administraci globálních
-skupin nepokoušel načíst z databáze projektové skupiny, dokud jejich
-třída nebyla použitá -- je to důsledek cachování tříd, tato funkce je
-však ve vývojovém režimu Rails vypnutá aby nebylo nutné restartovat
+skupin nepokoušel načíst z databáze projektové skupiny, pokud jejich
+třída nebyla předtím použita. To je důsledek cachování tříd, ovšem tato funkce je
+ve vývojovém režimu Rails vypnutá, aby nebylo nutné restartovat
 aplikační server při každé změně kódu\footnote{Novější verze Rails navíc
   detekují změny v souborech a obnovují jen ty třídy, které byly
   změněny.}.
 
 \subsection{Zhodnocení}
 
-Rozšíření splňuje všechny požadavky a bylo otestované jak automatickými
-testy, tak manuálně. Jedna z funkcí která by mohla být v budoucnu
-implementovaná je kopírování skupin, což by bylo užitečné zejména
+Rozšíření splňuje všechny požadavky a bylo otestováno jak automatickými
+testy, tak manuálně. Jedna z funkcí, která by mohla být v budoucnu
+implementována, je kopírování skupin, což by bylo užitečné zejména
 v kontextu projektových skupin (mohu si zkopírovat zděděnou skupinu do
-svého projektu a dále jí upravovat).
+svého projektu a dále ji upravovat).
 
 \section[Správa rolí a workflow na úrovni projektů]{Správa rolí a workflow na úrovni projektů (ChiliProject Project
 Roles)}
@@ -1375,12 +1375,12 @@ Uživatel s oprávněním pro modifikaci projektových rolí může:
 \end{enumerate}
 Kromě rolí definovaných administrátorem má ChiliProject navíc dvě
 vestavěné role: \emph{anonymous} (pro nepřihlášeného uživatele) a
-\emph{non-member} (pro uživatele který v kontextu projektu není jeho
+\emph{non-member} (pro uživatele, který v kontextu projektu není jeho
 členem).
 
 S funkcemi rolí je úzce spjatý systém \gls{workflow} -- pokud by tato
-funkce nebyla zahrnuta, projektové role by mohly pouze omezeně používat
-issue tracker.
+funkce nebyla zahrnuta, projektové role by mohly používat
+issue tracker pouze omezeně.
 
 Uživatel s oprávněním pro modifikaci projektového \gls{workflow} může:
 
@@ -1391,11 +1391,11 @@ Uživatel s oprávněním pro modifikaci projektového \gls{workflow} může:
 \end{enumerate}
 \subsection{Existující řešení}
 
-Částečný překryv funkcí byl s rozšířením Role Shift\footnote{\url{http://projects.andriylesyuk.com/projects/role-shift}}
+Část požadovaných funkcí nabízí rozšíření Role Shift\footnote{\url{http://projects.andriylesyuk.com/projects/role-shift}},
 které funguje na principu \emph{posunu} role -- jedna role se tak
-v určitém projektu může chovat jako jiná. Ačkoliv to nezní moc užitečně,
-částečně to řeší požadavek 3, protože je možné předefinovat i vestavěné
-role. Pro řešení vestavěných rolí se tato strategie ukázala jako
+v určitém projektu může chovat jako jiná. Ačkoli to nezní moc užitečně,
+částečně to řeší požadavek 3, protože je tím možné předefinovat i vestavěné
+role. Právě pro řešení vestavěných rolí se tato strategie ukázala jako
 nejschůdnější.
 
 \subsection{Systém rolí a oprávnění}
@@ -1404,16 +1404,16 @@ Jaký je vztah rolí vůči uživatelům a projektům už jsem naznačil
 (\ref{sec:proj_group_sys}). Oprávnění nemají v systému samostatný model,
 většinou se s nimi pracuje na úrovni rolí jako s polem symbolů.
 
-Pokud je zapotřebí zjistit autorizaci uživatele, použije se instanční
+Pokud je zapotřebí zajistit autorizaci uživatele, použije se instanční
 metoda \lstinline!Principal#allowed_to?! která dostane symbol
 představující určité oprávnění (například
 \lstinline!:manage_project_roles!), kontext (tím může být projekt, pole
 projektů, nebo \lstinline!nil!) a volbu, zda se má kontrolovat globální
-kontext -- ten se používá například u vytváření nových projektů které
+kontext -- ten se používá například u vytváření nových projektů, které
 nemají rodiče, tj. tam, kde nelze vyjít z kontextu existujícího
-projektu. Pro ověření autorizace se projdou všechny role které daný
-uživatel má v daném kontextu -- projektu (či v projektech), pokud je
-u nějaké role zjištěno hledané oprávnění, je autorizace úspěšná.
+projektu. Pro ověření autorizace se projdou všechny role, které daný
+uživatel má v daném kontextu -- projektu (či v projektech). Pokud se
+u nějaké role najde hledané oprávnění, je autorizace úspěšná.
 
 \subsubsection{Model projektových rolí}
 
@@ -1431,9 +1431,9 @@ Projektová role se z hlediska autorizace chová stejně jako normální
 role, s výjimkou autorizace v globálním kontextu -- v takovém případě
 nesmí být projektové role brány v potaz a z kontroly práv jsou zcela
 vyloučeny. V kontextu projektu se pak kontrolují pouze ty role, které má
-uživatel tomto projektu přiřazené, není zde tedy nutné dodatečně
-kontrolovat, zda prověřovaná role do projektu skutečně patří. Nicméně je
-tato kontrola prováděna u člena projektu (model Member), kde validace
+uživatel v tomto projektu přiřazené, není zde tedy nutné dodatečně
+kontrolovat, zda prověřovaná role do projektu skutečně patří. Nicméně
+tato kontrola je prováděná u člena projektu (model Member), kde validace
 zabrání vzniku členství s rolemi, které nepatří do hierarchie projektu.
 
 Pro dědění rolí do podprojektů jsem z popsaných možností
@@ -1447,22 +1447,22 @@ named_scope :available_for_project, lambda { |project|
  :conditions => ["roles.type = 'Role' OR (roles.type = 'LocalRole' AND projects.lft <= ? AND projects.rgt >= ?)", project.left, project.right] }
 }
 \end{lstlisting}
-Obdobné řešení lze použít pokud takto chceme vybrat pouze lokální role.
+Obdobné řešení lze použít, pokud takto chceme vybrat pouze lokální role.
 
 Tímto lze vyřešit vytváření a aplikování projektových rolí, jak si však
 poradit se speciálními rolemi?
 
 \subsubsection{Posun rolí}
 
-Uvažoval jsem nad různými variantami jak v rozšíření zpracovat speciální
+Uvažoval jsem nad různými variantami, jak v rozšíření zpracovat speciální
 role \emph{non-member} a \emph{anonymous}. Většina návrhů měla problém
-s děděním rolí, nebylo možné je vyřešit dostatečně transparentně a
-přívětivě pro správce projektu, nebo narážela prostý fakt, že
-ChiliProject počítá s tím, že v databázi eixstuje jen jediná speciální
+s děděním rolí. Nebylo možné je vyřešit dostatečně transparentně a
+přívětivě pro správce projektu, nebo narážela na prostý fakt, že
+ChiliProject počítá s tím, že v databázi existuje pouze jediná speciální
 role daného druhu. Nakonec jsem použil modifikaci řešení od Andriye
 Lesyuka ze zmíněného rozšíření Role Shift.
 
-Do aplikace je přidán nový model RoleShift který je dekompozicí M:N
+Do aplikace je přidán nový model RoleShift, který je dekompozicí M:N
 relace mezi projektem a rolí.
 
 \begin{figure}[htbp]
@@ -1474,10 +1474,10 @@ relace mezi projektem a rolí.
 Každý projekt může mít nejvýše dva záznamy RoleShift:
 \lstinline!role_non_member! a \lstinline!role_anonymous! (typ je určený
 pomocí atributu \lstinline!builtin!). Pokud tyto záznamy existují, budou
-s nimi asociované role namísto odpovídajících globálních rolí.
+s nimi asociované role použity namísto odpovídajících globálních rolí.
 
-Uživatel tak má pod kontrolou zda chce výchozí globální roli nahradit či
-nikoli, navíc je možné použít jednotnou správu projektových rolí a
+Správce tak má pod kontrolou, zda chce výchozí globální roli nahradit či
+nikoliv, navíc je možné použít jednotnou správu projektových rolí a
 jejich dědičnost.
 
 \subsubsection{Manipulace s projektovými rolemi}
@@ -1493,7 +1493,7 @@ rolí.
 
 Autorizace je rozdělená do dvou oprávnění -- \emph{Manage project roles} a
 \emph{Manage role shifts}. Důvodem je, že o projektové role a o posuny rolí
-se starají dva různé controllery a ChiliProject nenabízí způsob jak
+se starají dva různé controllery a ChiliProject nenabízí způsob, jak
 sloučit autorizaci k více controllerům pod jediné oprávnění. Návrh však
 předpokládá, že tato dvě oprávnění budou používaná společně.
 
@@ -1512,7 +1512,7 @@ využít standardní asociace s modelem Role.
 V rámci rozšíření tak stačí zajistit možnost správy workflow ve vlastním
 controlleru (LocalWorkflowsController). Ten je téměř stejný jako
 standardní controller (WorkflowsController), rozdíl je však v rozsahu
-rolí se kterými pracuje. V rámci projektu je možné editovat pouze
+rolí, se kterými pracuje. V rámci projektu je možné editovat pouze
 workflow těch rolí, které bezprostředně patří danému projektu.
 
 I workflow mají samostatné oprávnění \emph{Manage project workflows}.
@@ -1526,57 +1526,57 @@ dalších omezení.
 
 \subsection{Zhodnocení}
 
-Požadavky byly splněné a funkčnost rozšíření byla otestovaná. Podobně
-jako u projektových skupin se jako jedna z možností pro další vývoj
-nabízí možnost kopírování rolí.
+Požadavky byly splněny a funkčnost rozšíření byla otestována. Podobně
+jako u projektových skupin se pro další vývoj
+nabízí implementace kopírování rolí.
 
-Jistý prostor je zde pro optimalizaci dotazování databáze -- zejména
+Nabízí se zde také jistý prostor pro optimalizaci dotazování databáze -- zejména
 posun rolí se provádí při téměř každé akci bez ohledu na to, zda nějaká
 náhradní role existuje -- to však vyžaduje podrobnější určení
 \glspl{scope} vhodných pro optimalizaci.
 
-Vzhledem ke komplexitě a množství metod které rozšíření nahrazuje
-v jádru aplikace může dojít ke konfliktům s jinými rozšířeními, takové
+Vzhledem ke komplexitě a množství metod, které rozšíření nahrazuje
+v jádru aplikace, může dojít ke konfliktům s jinými rozšířeními. Takové
 případy však bude nutné řešit individuálně úpravou tohoto nebo
 konfliktního rozšíření.
 
-\section[Wiki stránky s omezenou přístupností]{Wiki stránky s omezenou přístupností (ChiliProject Private
+\section[Wiki stránky s omezeným přístupem]{Wiki stránky s omezeným přístupem (ChiliProject Private
 Wiki)}
 \label{sec:private_wiki}
 
 \subsection{Specifikace}
 
-Rozšíření by mělo umožnit existenci soukromých stránek na \gls{wiki},
+Rozšíření by mělo umožnit vytváření soukromých stránek na \gls{wiki},
 které budou přístupné pouze uživatelům s odpovídajícím oprávněním. Zcela
 původní návrh hovořil o komplexní správě přes \gls{ACL} s individuální
 správou konkrétních akcí (prohlížení, úprava, přístup k historii atp.),
-nakonec však bylo rozhodnuto pro jednodušší řešení i s ohledem na to, že
+ale nakonec bylo upřednostněno jednodušší řešení. Mimo jiné s ohledem k tomu, že
 správa projektových rolí může tyto funkce celkem dobře nahradit. Role
-však pracují s wiki v projektu jako celkem, toto rozšíření umožňuje
+však pracují s wiki v projektu jako celkem, proto toto rozšíření umožňuje
 jemnější řízení přístupu ke konkrétním stránkám. Rozšíření by mělo
-respektovat pokud hierarchii stránek -- pokud je soukromý některý
-z předchůdců, bude tato stránka také soukromá.
+respektovat hierarchii stránek -- pokud je soukromý některý
+z předchůdců, bude daná stránka také soukromá.
 
 Uživatelé budou moct získat dvě nová oprávnění: správa viditelnosti
 stránky a přístup na soukromé stránky. První oprávnění dává uživateli
-možnost nastavit stránku jako soukromou, druhá umožňuje aby vůbec mohl
+možnost nastavit stránku jako soukromou, druhé umožňuje aby vůbec mohl
 vidět obsah stránky.
 
 \subsection{Existující řešení}
 
 V tomto případě už existuje poměrně funkční řešení v podobě rozšíření
-Redmine Private Wiki\footnote{\url{https://github.com/f0y/redmine_private_wiki}}
-které napsal Oleg Kandurov. Autor však nespecifikoval licenci. Po
-ujištění, že je kód dostupný pod permisivní MIT licencí (kterou jsem
-zachoval), jsem vytvořil \gls{fork} rozšíření, obligátně nazvaný
+Redmine Private Wiki\footnote{\url{https://github.com/f0y/redmine_private_wiki}},
+které napsal Oleg Kandurov. Autor ovšem nespecifikoval licenci. Po
+ujištění, že je kód dostupný pod permisivní MIT licencí (která byla
+zachována), jsem vytvořil \gls{fork} rozšíření, obligátně nazvaný
 ChiliProject Private Wiki.
 
 \subsection{Úprava rozšíření Private Wiki}
 
-Rozšíření přidává ke stránkám wiki dodatečný booleovský atribut
+Rozšíření přidává k wiki stránkám dodatečný booleovský atribut
 \lstinline!private!. Pro zajištění dodatečné autorizace se provede
 \lstinline!before_filter! v controlleru wiki stránek
-(WikiPagesController), který po standardní autorizace zkontroluje zda je
+(WikiPagesController), který po standardní autorizace zkontroluje, zda je
 stránka soukromá a zda daný uživatel má oprávnění k ní přistupovat. Mimo
 to zajišťuje rozšíření změnu atributu \lstinline!private!
 prostřednictvím nové akce v controlleru -- tu může oprávněný uživatel
@@ -1584,7 +1584,7 @@ vyvolat prostřednictvím odkazu na wiki stránce. Uživatelské rozhraní je
 upraveno pomocí JavaScriptu -- pohledy bohužel nemají dostatek zpětných
 volání, aby je bylo možné rozšířit na straně serveru. O přístupnosti pro
 uživatele s vypnutým JavaScriptem však beztak nelze hovořit, protože
-samotný framework Rails JavaScript vyžaduje pro běžnou uživatelskou
+samotný framework Rails vyžaduje JavaScript i pro běžnou uživatelskou
 interakci\footnote{Rails 3 používá \uv{unobtrusive JavaScript}
   což tento problém z velké části řeší.}.
 
@@ -1598,20 +1598,20 @@ interakci\footnote{Rails 3 používá \uv{unobtrusive JavaScript}
 Rozšíření má však některé nedostatky -- nerespektuje hierarchii stránek
 a nemá testy.
 
-Narozdíl od projektů je hierarchie wiki stránek v databázi řešená jako
-jednoduchý strom, kdy stránka odkazuje pouze bezprostředně na svého
+Na rozdíl od projektů je hierarchie wiki stránek v databázi řešena jako
+jednoduchý strom, kdy stránka odkazuje pouze na svého bezprostředního
 rodiče přes sloupec \lstinline!parent_id!. Při procházení ke kořeni se
-pro každého předka provede nový dotaz na databázi -- na druhou stranu,
+pro každého předka provede nový dotaz do databáze -- na druhou stranu,
 Rails v rámci jedné akce implicitně cachuje výsledky totožných dotazů,
 tudíž se tato operace provede pouze jednou. Kontrola soukromých stránek
-v rámci hierarchie bude mít na výkon aplikace minimální dopad --
+v rámci hierarchie bude mít na výkon aplikace jen minimální dopad --
 ChiliProject beztak vypisuje seznam předků stránky (tzv. drobečková
 navigace), takže databáze dostane tuto sadu dotazů i bez tohoto
 rozšíření.
 
-V tomto případě, vzhledem k tomu že jde o rozšíření které zpřísňuje
+V tomto případě, vzhledem k tomu, že jde o rozšíření, které zpřísňuje
 autorizaci, jsou nejdůležitější funkcionální testy controlleru. Použil
-jsem zde (podobně jako u ostatních rozšíření) hromadný test zda soukromá
+jsem zde (podobně jako u ostatních rozšíření) hromadný test, zda soukromá
 stránka zablokuje všechny akce pro neautorizovaného uživatele:
 
 \begin{lstlisting}
@@ -1627,35 +1627,35 @@ end
 \end{lstlisting}
 Tento fragment vytvoří devět testů pro různé akce s příslušnými metodami
 a očekává, že ve všech případech controller vrátí HTTP kód 403
-(přístup zakázán). Není to samozřejmě neprůstřelná metoda, pokud do
+(přístup zakázán). Není to samozřejmě neprůstřelná metoda; pokud do
 controlleru přibude nová akce, je nutné test aktualizovat -- zde by bylo
 zajímavé využití reflexe pro automatické určení metod pro testování.
 
 \subsection{Zhodnocení}
 
 Toto rozšíření je poměrně jednoduché jak z vývojářského, tak
-z uživatelského hlediska. Zajímavé bude sledovat využívání tohoto
-rozšíření v praxi -- v kombinaci s projektovými rolemi se jedná
+z uživatelského hlediska. Zajímavé bude sledovat jeho využívání
+v praxi -- v kombinaci s projektovými rolemi se jedná
 o zajímavou alternativu k plnohodnotnému \gls{ACL}, která jen minimálně
 zatěžuje uživatele.
 
 Další vývoj by mohl například přidat přehled soukromých stránek a
-případně jejich hromadnou správu. Užitečná by byla i možnost vytvoření
+případně jejich hromadnou správu. Užitečná by byla i možnost přímého vytvoření
 soukromé stránky -- volba by byla dostupná hned ve formuláři.
 
-\section[Úkoly s omezenou přístupností]{Úkoly s omezenou přístupností (ChiliProject Private Issues)}
+\section[Úkoly s omezeným přístupem]{Úkoly s omezeným přístupem (ChiliProject Private Issues)}
 \label{sec:private_issues}
 
 \subsection{Specifikace}
 
 Cíl je podobný jako u soukromých wiki stránek -- některé úkoly v issue
 trackeru budou označené jako sokromé, a uvidí je pouze oprávnění
-uživatelé. Jsou zde však jistá specifika, uživatel by měl vidět úkol
-pokud jej sám vytvořil, nebo je mu přiřazen -- a to bez ohledu na to,
-zda má příslušné oprávnění nebo ne.
+uživatelé. Jsou zde však jistá specifika; uživatel by měl vidět úkol,
+který sám vytvořil, nebo mu byl přiřazen, a to bez ohledu na to,
+zda má příslušné oprávnění, nebo ne.
 
 Opět jsou zde dvě oprávnění: nastavení viditelnosti úkolu a přístup
-k soukromým úkolům. Uživatel má přístup k viditelnému úkolu pokud má
+k soukromým úkolům. Uživatel má přístup k soukromému úkolu, pouze pokud má
 příslušné oprávnění, je autorem úkolu a nebo byl k němu přiřazen --
 obdobně jako s přístupem je to i s viditelností úkolu v přehledu úkolů.
 
@@ -1672,13 +1672,13 @@ rozšíření.
 
 \subsection{Implementace rozšíření}
 
-Základní idea je stejná jako u wiki stránek -- controller zakáže přístup
+Základní idea je stejná jako u wiki stránek -- controller zakáže přístup,
 pokud uživatel neprojde autorizací. Oříškem je však rozhraní pro
 vybírání úkolů z databáze -- model Query. Kromě jednoduchého výpisu
 úkolů umožňuje i předdefinovat specifické kombinace dotazů. Uvnitř se
 jedná o velký generátor SQL, který občas může vrátit klauzuli
-\lstinline!WHERE 0=1!. Rozšíření nemá mnoho možností jak ovlivnit
-generování dotazu, jedným řešením je odchytit vygenerovaný řetězec
+\lstinline!WHERE 0=1!. Rozšíření nemá mnoho možností, jak ovlivnit
+generování dotazu. Jedině odchytit vygenerovaný řetězec
 s dotazem a připojit k němu vlastní podmínky:
 
 \begin{lstlisting}
@@ -1693,8 +1693,8 @@ def statement_with_private_issues
   filters_clauses
 end
 \end{lstlisting}
-Testy pak kontrolují zda se úkol zobrazí ve výpisu uživateli
-s oprávněním pro prohlížení soukromých úkolů, stejně tak i pro uživatele
+Testy pak kontrolují, zda se úkol zobrazí ve výpisu uživateli
+s oprávněním pro prohlížení soukromých úkolů, stejně tak i pro uživatele,
 který je k úkolu přiřazený. Obdobně je tomu i s přístupností
 controlleru.
 
@@ -1709,7 +1709,7 @@ controlleru.
 Tato implementace sice není tak funkční jako vestavěná funkcionalita
 v Redmine, nicméně svoji úlohu plní. V budoucích verzích by zřejmě bylo
 dobré rozdělit přidružená oprávnění, což by umožnilo podrobněji
-definovat co uživatelé mohou, a co ne. Bylo by možné také hlouběji
+definovat, co uživatelé mohou, a co ne. Bylo by možné také hlouběji
 propracovat integraci s vyhledáváním úkolů -- mohlo by se jednat
 o kritérium, což by umožnilo snadno nalézt všechny soukromé úkoly.
 
@@ -1723,12 +1723,12 @@ registrační procedurou -- vyplnit jméno, heslo, e-mail\ldots{} Přitom
 všechny tyto údaje jsou k dispozici přes \gls{LDAP}, který systém již
 umí používat. I když se uživatel poprvé přihlásí s údaji z \gls{LDAP},
 je mu automaticky vytvořen účet bez nutnosti cokoliv vyplňovat. Je tedy
-celkem logické kdyby existovala funkce, která umožní administrátorovi
+celkem logické, aby existovala funkce, která umožní administrátorovi
 importovat uživatele zadáním uživatelského jména.
 
-Rozšíření přidá novou stránku do administrace, zde je možné zadat
+Rozšíření přidá novou stránku do administrace, kde je možné zadat
 uživatelská jména -- pokud je takto nalezen uživatel, který doposud není
-v databázi ChiliProjectu, bude mu automaticky vytvořen účet stejně, jako
+v databázi ChiliProjectu, bude mu automaticky vytvořen účet, stejně jako
 by se zaregistroval.
 
 \subsection{Implementace rozšíření}
@@ -1736,23 +1736,23 @@ by se zaregistroval.
 Autentizace uživatelů je řešena přes abstraktní model AuthSource.
 ChiliProject standardně obsahuje autentizaci přes \gls{LDAP} -- model
 AuthSourceLdap. Z toho je zřejmé, že autentizace je modulární; lze
-snadno definovat nové autentizační zdroje a definovat je v projektu,
-postačí když budou dodržovat definované rozhraní.
+snadno definovat nové autentizační zdroje a použít je v projektu, přičemž
+postačí, když budou dodržovat definované rozhraní.
 
 Toto rozšíření však pracuje s modelem AuthSourceLdap. Ten umí
-autentizovat uživatele dle zadaného jména a hesla, a vrátit údaje pro
-další zpracování -- nejprve z adresáře stáhne údaje o uživateli čímž
-také ověří, že uživatel existuje
+autentizovat uživatele dle zadané dvojice jméno-heslo a vrátit údaje pro
+další zpracování. Nejprve z adresáře stáhne údaje o uživateli, čímž
+také ověří, že vůbec existuje
 (\lstinline!AuthSourceLdap#get_user_dn!), následně se pokusí s předanými
 údaji k adresáři připojit. V rozšíření potřebujeme provést pouze první
 část -- získat z adresáře údaje o uživateli -- a následně vytvořit
 záznam uživatele. Patch pro AuthSourceLdap přidává metodu
-\lstinline!get_user! se kterou pak pracuje samostatný controller
+\lstinline!get_user!, se kterou pak pracuje samostatný controller
 \lstinline!LdapUsersController! dostupný přes administraci.
 
 Součástí rozšíření nejsou testy -- v praxi se ukázalo jednodušší
 vyzkoušet funkčnost s fakultním LDAP serverem, než server simulovat.
-Pravděpodobně by testy ani nepomohly objevit problém s kódováním řetězců
+Pravděpodobně by ani testy nepomohly objevit problém s kódováním řetězců
 získaných přes LDAP. Vypsání těchto řetězců (typicky se jednalo o plné
 jméno přidávaného uživatele) způsobilo chybu ve vykreslování stránky.
 Mock server by tuto chybu neodhalil.
@@ -1763,20 +1763,20 @@ Toto rozšíření je velice jednoduché a považuji jej spíš za funkční
 prototyp, který by se mohl stát součástí rozsáhlejší integrace služeb
 LDAP serveru. Při přidávání uživatelů by ChiliProject mohl, například
 při přidávání uživatele do projektu, \uv{našeptávat} uživatele nalezené
-v adresáři podle zadaných údajů, a následně jim vytvořit účet -- částečně
+v adresáři podle zadaných údajů, a následně jim vytvořit účty -- částečně
 by se tak smazala hranice mezi lokální databází a externími zdroji.
 
 Jako minimální implementace však může sloužit toto rozšíření už nyní.
 
 \begin{conclusion}
 
-Cílem práce bylo analyzovat a zvolit nejvhodnější řešení pro správu projektů v Oddělení ICT Fakulty informačních technologií. Pro vybraný systém pak byly implementována rozšíření, která dále přizpůsobila systém potřebám oddělení. Funkčnost rozšíření byla otestována manuálně i prostřednictvím automatických testů, dále byla ověřena vzájemná nekonfliktnost a integrace všech rozšíření -- systém jako celek prošel všemi automatizovanými testy. Z tohoto hlediska lze práci hodnotit jako úspěšnou.
+Cílem práce bylo analyzovat a zvolit nejvhodnější řešení pro správu projektů v Oddělení \gls{ICT} Fakulty informačních technologií. Pro vybraný systém pak byla implementována rozšíření, která ho dále přizpůsobila potřebám oddělení. Funkčnost rozšíření byla otestována manuálně i prostřednictvím automatických testů, dále byla ověřena vzájemná nekonfliktnost a integrace všech rozšíření -- systém jako celek prošel všemi automatickými testy. Z tohoto hlediska lze práci hodnotit jako úspěšnou.
 
 Mým cílem bylo implementovat veškeré přidané funkce jako rozšíření, bez zásahu do jádra aplikace -- tento cíl se mi také podařilo splnit a věřím, že to bude mít pozitivní vliv jak pro \gls{ICT} oddělení v podobě snadnější správy aktualizací, tak pro budoucí vývoj jednotlivých rozšíření, která mohou být zapojena do komunitního vývoje.
 
 Rozšíření jsou v současnosti provozována na testovacím serveru; nepředpokládám, že nový systém bude ihned uveden do provozu, bude vhodné jej nejprve otestovat s reálnými uživateli a daty. Jako jedno z řešení pro postupnou migraci se nabízí provoz testovacího serveru nad replikou databáze současného systému. Testovací provoz je i vhodnou příležitostí pro nasazení moderního software, ať už je to Ruby 1.9.3 či poslední generace aplikačního serveru Passenger \citep{Passenger32}.
 
-Modifikace uvedné v této práci představují pouhý zlomek funkcí, které mohou dále zjednodušit správu projektů a zlepšit uživatelský komfort.
+Modifikace uvedené v této práci představují pouhý zlomek funkcí, které mohou dále zjednodušit správu projektů a zlepšit uživatelský komfort.
 
 \end{conclusion}
 
@@ -1813,4 +1813,3 @@ Modifikace uvedné v této práci představují pouhý zlomek funkcí, které mo
 \end{figure}
 
 \end{document}
-
