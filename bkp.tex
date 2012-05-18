@@ -90,18 +90,18 @@ description={Distribuovaný systém správy kódu}
 } \newglossaryentry{mercurial}{
 name=Mercurial,
 description={Distribuovaný systém správy kódu}
-} \newglossaryentry{SCM}{
+} \newglossaryentry{scmgls}{
 name=SCM,
-description={Source Code Management, souhrnné označení software pro správu kódu}
-} \newglossaryentry{LDAP}{
+description={Souhrnné označení software pro správu kódu}
+} \newglossaryentry{ldapgls}{
 name=LDAP,
-description={Lightweight Directory Access Protocol, adresářová služba}
+description={Adresářová služba}
 } \newglossaryentry{bug tracker}{
 name=bug tracker,
 description={Systém hlášení úkolů a chyb zpravidla, lze považovat za speciální případ \gls{issue tracker}}
-} \newglossaryentry{SaaS}{
+} \newglossaryentry{saasgls}{
 name=SaaS,
-description={Software as a Service, software poskytovaný formou on-line služby}
+description={Software poskytovaný formou on-line služby}
 } \newglossaryentry{mikroblog}{
 name=mikroblog,
 description={Zjednodušený a minimalizovaný blog, například Twitter}
@@ -123,9 +123,9 @@ description={V kontextu jazyka Ruby: standardní formát balíčků pro aplikace
 } \newglossaryentry{scope}{
 name=scope,
 description={V kontextu Rails: makro které umožňuje definovat podmínky výběru z~databáze, volání scopes lze řetězit}
-} \newglossaryentry{ACL}{
+} \newglossaryentry{aclgls}{
 name=ACL,
-description={Access Control List, seznam uživatelů a jejich oprávnění pro přístup k~určitému zdroji}
+description={Seznam uživatelů a jejich oprávnění pro přístup k~určitému zdroji}
 } \newglossaryentry{fixtures}{
 name=fixtures,
 description={Metoda fixování testovacích dat, viz \autoref{sec:rails_tests}}
@@ -137,10 +137,15 @@ description={Plug-in, zásuvný modul -- kód který rozšiřuje funkčnost apli
 name=zpětné volání,
 description={Callback -- reference na funkci předaná za účelem jejího dalšího volání; v~Rails se zpětná volání používají k~obsluze událostí}
 }
-\newglossaryentry{YAML}{
+\newglossaryentry{yamlgls}{
 name=YAML,
-description={YAML Ain't Markup Language -- textový formát pro serializaci dat, zaměřený na uživatelskou přívětivost; viz \url{http://www.yaml.org/}}
+description={Textový formát pro serializaci dat, zaměřený na uživatelskou přívětivost; viz \url{http://www.yaml.org/}}
 }
+\newacronym[description=\glslink{yamlgls}{YAML Ain't Markup Language}]{YAML}{YAML}{YAML Ain't Markup Language}
+\newacronym[description=\glslink{aclgls}{Access Control List}]{ACL}{ACL}{Access Control List}
+\newacronym[description=\glslink{saasgls}{Software as a Service}]{SaaS}{SaaS}{Software as a Service}
+\newacronym[description=\glslink{ldapgls}{Lightweight Directory Access Protocol}]{LDAP}{LDAP}{Lightweight Directory Access Protocol}
+\newacronym[description=\glslink{scmgls}{Source Code Management}]{SCM}{SCM}{Source Code Management}
 \newacronym{ICT}{ICT}{Information and communication technologies}
 \newacronym{GPL}{GPL}{GNU General Public License}
 \newacronym{AGPL}{AGPL}{Affero General Public License}
@@ -153,11 +158,11 @@ description={YAML Ain't Markup Language -- textový formát pro serializaci dat,
 \newacronym{HTTP}{HTTP}{Hypertext Transfer Protocol}
 \newacronym{SQL}{SQL}{Structured Query Language}
 \newacronym{ORM}{ORM}{Object-Relational Mapping}
-\newacronym{FIT}{FIT}{Fakultra informačních technologií}
+\newacronym{FIT}{FIT}{Fakulta informačních technologií}
 
 \begin{introduction}
 
-Oddělení \glslink{ICT}{ICT} \glslink{FIT}{Fakulty informačních technologií} má na starost správu softwarového i hardwarového vybavení. Zajišťuje funkčnost fakultních informačních systémů i různých zařízení (tiskárny, počítače v~učebnách). To znamená sledovat a řešit velké množství různých požadavků, od přidání opravy do systému Edux po výměnu toneru v~tiskárnách. Správu požadavků by měl usnadnit jednotný systém pro správu projektů. Takový systém může podporovat i sdílení znalostí (např. v~rámci \gls{wiki}) a správu kódu.
+Oddělení \acrshort{ICT} \glslink{FIT}{Fakulty informačních technologií} má na starost správu softwarového i hardwarového vybavení. Zajišťuje funkčnost fakultních informačních systémů i různých zařízení (tiskárny, počítače v~učebnách). To znamená sledovat a řešit velké množství různých požadavků, od přidání opravy do systému Edux po výměnu toneru v~tiskárnách. Správu požadavků by měl usnadnit jednotný systém pro správu projektů. Takový systém může podporovat i sdílení znalostí (např. v~rámci \gls{wiki}) a správu kódu.
 
 Pro správu projektů oddělení používá systém Redmine,\footnote{\url{http://www.redmine.org/}} který splňuje většinu jejich potřeb. Redmine má však určité nedostatky z~hlediska správy většího množství projektů a uživatelů.
 
@@ -449,7 +454,7 @@ kódu. Pages není možné hierarchicky třídit a správa oprávnění je velic
 omezená.
 
 Pro malé týmy a nesoftwarové projekty však Teambox představuje výborné řešení a
-v~současné době se začíná prosazovat i na \glslink{FIT}{FIT}.\footnote{\url{http://teambox.fit.cvut.cz/}}
+v~současné době se začíná prosazovat i na \acrshort{FIT}.\footnote{\url{http://teambox.fit.cvut.cz/}}
 
 \section[Open Atrium]{Open Atrium\footnote{\url{http://openatrium.com/}}}
 
@@ -873,7 +878,7 @@ end
 
 Testy musí mít k~dispozici data, na kterých bude prověřována
 funkčnost aplikace. Rails standardně podporují tzv. fixtures, což jsou
-serializovaná data (nejčastěji ve formátu \gls{YAML}, jenž je činní
+serializovaná data (nejčastěji ve formátu \acrshort{YAML}, jenž je činní
 snadno editovatelnými), která jsou před provedením testů načtena do
 databáze. Fixtures musí být průběžně udržovány a s~rostoucí komplexností
 aplikace se komplikuje i jejich struktura. Proto se místo toho většinou
