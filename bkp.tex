@@ -112,7 +112,7 @@ name=duck typing,
 description={\uv{Pokud to kváká jako kachna, budu tomu říkat kachna} -- není kontrolován typ objektu, postačí že ví, jak odpovědět na zaslan zprávy}
 } \newglossaryentry{commit}{
 name=commit,
-description={Sada změn přidaných do repozitáže kódu}
+description={Sada změn přidaných do repozitáře kódu}
 } \newglossaryentry{submodul}{
 name=submodul,
 description={V kontextu systému Git: odkaz na externí repozitář z lokálního repozitáře}
@@ -1770,9 +1770,9 @@ Jako minimální implementace však může sloužit toto rozšíření už nyní
 
 \begin{conclusion}
 
-Cílem práce bylo analyzovat a zvolit nejvhodnější řešení pro správu projektů v Oddělení \gls{ICT} Fakulty informačních technologií. Pro vybraný systém pak byla implementována rozšíření, která ho dále přizpůsobila potřebám oddělení. Funkčnost rozšíření byla otestována manuálně i prostřednictvím automatických testů, dále byla ověřena vzájemná nekonfliktnost a integrace všech rozšíření -- systém jako celek prošel všemi automatickými testy. Z tohoto hlediska lze práci hodnotit jako úspěšnou.
+Cílem práce bylo analyzovat a zvolit nejvhodnější řešení pro správu projektů v Oddělení ICT Fakulty informačních technologií. Pro vybraný systém pak byla implementována rozšíření, která ho dále přizpůsobila potřebám oddělení. Funkčnost rozšíření byla otestována manuálně i prostřednictvím automatických testů, dále byla ověřena vzájemná nekonfliktnost a integrace všech rozšíření -- systém jako celek prošel všemi automatickými testy. Z tohoto hlediska lze práci hodnotit jako úspěšnou.
 
-Mým cílem bylo implementovat veškeré přidané funkce jako rozšíření, bez zásahu do jádra aplikace -- tento cíl se mi také podařilo splnit a věřím, že to bude mít pozitivní vliv jak pro \gls{ICT} oddělení v podobě snadnější správy aktualizací, tak pro budoucí vývoj jednotlivých rozšíření, která mohou být zapojena do komunitního vývoje.
+Mým cílem bylo implementovat veškeré přidané funkce jako rozšíření, bez zásahu do jádra aplikace -- tento cíl se mi také podařilo splnit a věřím, že to bude mít pozitivní vliv jak pro ICT oddělení v podobě snadnější správy aktualizací, tak pro budoucí vývoj jednotlivých rozšíření, která mohou být zapojena do komunitního vývoje.
 
 Rozšíření jsou v současnosti provozována na testovacím serveru; nepředpokládám, že nový systém bude ihned uveden do provozu, bude vhodné jej nejprve otestovat s reálnými uživateli a daty. Jako jedno z řešení pro postupnou migraci se nabízí provoz testovacího serveru nad replikou databáze současného systému. Testovací provoz je i vhodnou příležitostí pro nasazení moderního software, ať už je to Ruby 1.9.3 či poslední generace aplikačního serveru Passenger \citep{Passenger32}.
 
