@@ -950,7 +950,7 @@ knihoven používaných v systému ChiliProject zpravidla ani není problém
 zajistit kompatibilitu se staršími verzemi interpretu -- stále větší
 výzvou však bude udržovat krok s novými verzemi Ruby.
 
-Rozšíření byla otestována s vývojovou verzí ChiliProject 3.2.0,
+Rozšíření byla testovaná s vývojovou verzí ChiliProject 3.2.0,
 pravděpodobně by však s menšími úpravami mohla být kompatibilní jak se
 staršími verzemi, tak se sytémem Redmine.
 
@@ -993,19 +993,19 @@ jeho stabilitu. Po vzoru metodiky \gls{TDD} je tak možné psát testy
 současně s funkčním kódem. Zároveň je v průběhu vývoje možné využívat
 \gls{CI}.
 
-Protože veškerý kód v této práci je open-source licencemi, kód rozšíření
-je od začátku hostovaný ve veřejných repozitářích na serveru GitHub.
+Protože veškerý kód v této práci je open source, rozšíření
+jsou od začátku hostovaná ve veřejných repozitářích na serveru GitHub.
 Není to pouze otázka osobní preference, existuje řada nezávislých služeb
-které nabízí projektům na GitHubu užitečné funkce navíc. Konkrétně
-v tomto případě jsem se rozhodl využít službu Travis-CI\footnote{\url{http://travis-ci.org/}},
-která poskytuje hostované open-source řešení pro \gls{CI} zcela zdarma.
+které nabízí projektům na GitHubu užitečné funkce navíc.
+V tomto případě jsem se rozhodl využít službu Travis-CI\footnote{\url{http://travis-ci.org/}},
+která nabízí hostované řešení pro \gls{CI} open source projekty zcela zdarma.
 
-Travis-CI funguje následovně: ze serveru GitHub oznámení, že v cílovém
-repozitáři přibyl nový \gls{commit} (přes tzv. post-commit hook). Travis
+Travis-CI funguje následovně: ze serveru GitHub přijde oznámení, že v cílovém
+repozitáři přibyl nový \gls{commit} (přes tzv. post-commit hook). Služba
 spustí \emph{build}: vytvoří virtuální stroj, stáhne do něj repozitář
-s kódem, nainstaluje potřebné knihovny, spustí sadu testů. Testy typicky
+s kódem, nainstaluje potřebné knihovny, spustí sadu testů. Testy
 vrací návratový kód -- jak je typické pro Unix: \lstinline!0! znamená
-úspěch, jiné číslo je neúspěch. Travis kontroluje tento návratový kód a
+úspěch, jiné číslo je neúspěch. Travis-CI kontroluje tento návratový kód a
 podle toho označí build jako úspěšný či neúspěšný. Průběh buildu je
 možné sledovat v reálném čase přes webové rozhraní.
 
