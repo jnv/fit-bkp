@@ -568,7 +568,8 @@ formu výsledné práce.
 
 \section{Vlastnosti platformy}
 
-ChiliProject používá framework Ruby on Rails ve verzi 2.3.
+ChiliProject je napsaný v jazyce Ruby s použitím frameworku
+Ruby on Rails.
 
 Samotný jazyk Ruby má řadu specifických vlastností, které značně
 rozšiřují možnosti implementace. Zaměřím se proto na některé dynamické
@@ -630,7 +631,7 @@ Původní třídu rozšíříme o~tento modul:
 \end{lstlisting}
 Pro redefinici existujících metod z~modulu je vhodné použít makro \\
 \lstinline!alias_method_chain! z~knihovny
-ActiveSupport (která je součástí Rails).
+ActiveSupport (z frameworku Rails).
 
 \begin{lstlisting}
 module ExamplePatch
@@ -950,10 +951,18 @@ Prvotním předpokladem implementace byla kompatibilita s~poslední verzí
 oficiálního interpreta Ruby, \gls{MRI} 1.9.3. Samotný ChiliProject
 podporuje také verze 1.8.7 a 1.9.2, avšak pokud je to možné, nevyplatí se
 je používat i proto, že oproti novější verzi poskytují horší výkon. Je tomu
-tak i v~případě \gls{REE} \citep[End of Life]{REEEOL}. S~ohledem na stáří
-knihoven používaných v~systému ChiliProject zpravidla ani není problém
-zajistit kompatibilitu se staršími verzemi interpretu -- stále větší
-výzvou však bude udržovat krok s~novými verzemi Ruby.
+tak i v~případě \acrfull{REE} \citep[End of Life]{REEEOL}, což je modifikovaná verze
+\gls{MRI} řady 1.8, která by měla poskytovat vyšší výkon pro serverové aplikace
+(a oproti oficiální verzi \gls{MRI} 1.8 se jí to skutečně daří).
+
+Čísla verzí jsou u \gls{MRI} velice zavádějící, aplikace napsané
+pro \gls{MRI} verze 1.9.2 mohou mít problémy s verzí 1.9.3.
+ChiliProject používá mnoho knihoven, ktré byly cílené na \gls{MRI} řady
+1.8 a v současnosti už se nevyvíjí. Přitom se problémy s kompatibilitou
+poměrně obtížně analyzují, většinou jsou důsledkem drobné změny v chování interpreta.
+
+Cílová verze frameworku Rails je určená aplikací ChiliProject -- ta používá
+poslední verzi Rails řady 2 (2.3.14), která už není oficiálně podporovaná.
 
 Rozšíření byla testovaná s~vývojovou verzí ChiliProject 3.2.0,
 pravděpodobně by však s~menšími úpravami mohla být kompatibilní jak se
