@@ -170,7 +170,7 @@ Text práce je členěn do čtyř kapitol. První kapitola rozebírá současný
 
 \end{introduction}
 
-\chapter{Systém Redmine a požadadované vlastnosti}
+\chapter{Systém Redmine a požadované vlastnosti}
 
 Při určování požadavků je nutné zohlednit vlastnosti stávajícího
 systému, proto nejprve popíšu nejdůležitější vlastnosti Redmine
@@ -489,11 +489,10 @@ I přes to, že se nejedná o zcela novou aplikaci (historie sahá do roku
 jakási koncepce projektů a komponent, avšak kromě jejich administrace se
 nezdá, že by s nimi bylo možné dělat cokoliv jiného -- wiki a issue
 tracker sdílejí jediný prostor. Sympatická je správa repozitáře kódu,
-narozdíl od systému Trac je možné přidávat nové repozitáře přes webové
+na rozdíl od systému Trac je možné přidávat nové repozitáře přes webové
 rozhraní a výchozí instalace podporuje, kromě Subversion, také Git a
 Mercurial. Wiki je také uložená v repozitáři, což lze využít k přímé
-editaci dokumentů bez potřeby webového rozhraní -- podobně řešenou wiki
-má i GitHub přes systém Gollum\footnote{\url{https://github.com/github/gollum}}.
+editaci dokumentů bez potřeby webového rozhraní.
 
 V ostatních ohledech se aplikace chová stejně jako Trac, rozdíly jsou
 spíše kosmetického charakteru.
@@ -505,7 +504,7 @@ rámci PHP aplikací.
 
 \section[ChiliProject]{ChiliProject\footnote{\url{https://www.chiliproject.org/}}}
 
-ChiliProject vzniknul jako \gls{fork} Redmine
+ChiliProject vznikl jako \gls{fork} Redmine
 \citep{ChiliProjectWhyFork}. Některé důvody pro odštěpení od Redmine
 byly nesystematičnost a uzavřenost vývoje. ChiliProject se proto snaží
 být otevřenější (z hlediska přístupnosti přispěvatelům) a stabilnější
@@ -654,7 +653,7 @@ odštěpení od originální aplikace.
 \subsection{Architektura Ruby on Rails}
 
 Framework Rails má zajisté velký podíl na popularizaci jazyka Ruby i
-architektury Model-view-controller (MVC) pro webové aplikace. Jak
+architektury Model--view--controller (MVC) pro webové aplikace. Jak
 poukazuje \citep{Krzywda2011}, ve skutečnosti má MVC v pojetí Rails
 blíže k paradigmatu Model 2, který vznikl s ohledem na specifika
 webových aplikací \citep{McCallister2004}. Označení MVC používá řada
@@ -1649,7 +1648,7 @@ soukromé stránky -- volba by byla dostupná hned ve formuláři.
 \subsection{Specifikace}
 
 Cíl je podobný jako u soukromých wiki stránek -- některé úkoly v issue
-trackeru budou označené jako sokromé, a uvidí je pouze oprávnění
+trackeru budou označené jako soukromé, a uvidí je pouze oprávnění
 uživatelé. Jsou zde však jistá specifika; uživatel by měl vidět úkol,
 který sám vytvořil, nebo mu byl přiřazen, a to bez ohledu na to,
 zda má příslušné oprávnění, nebo ne.
