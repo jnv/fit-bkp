@@ -1386,7 +1386,7 @@ Uživatel s~oprávněním pro modifikaci projektových rolí může:
 
 \begin{enumerate}
 \item
-  Vytvářet či mazat projektové role (v~kontextu daného projektu),
+  Vytvářet či mazat projektové role v~kontextu daného projektu,
 \item
   upravovat práva projektových rolí,
 \item
@@ -1788,6 +1788,10 @@ LDAP serveru. Při přidávání uživatelů by ChiliProject mohl, například
 při přidávání uživatele do projektu, \uv{našeptávat} uživatele nalezené
 v~adresáři podle zadaných údajů, a následně jim vytvořit účty -- částečně
 by se tak smazala hranice mezi lokální databází a externími zdroji.
+
+Alternativou by bylo dále rozvíjet systém přidávání uživatelů,
+který by umožnil vyhledávání a hromadný import uživatelů na základě
+určitých kritérií -- například uživatelské skupiny v \gls{LDAP}.
 
 Jako minimální implementace však může sloužit toto rozšíření už nyní.
 
