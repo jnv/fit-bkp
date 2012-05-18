@@ -14,6 +14,7 @@
 % \usepackage{amsmath} %advanced maths
 % \usepackage{amssymb} %additional math symbols
 \usepackage{listings}
+%\usepackage{enumitem}
 
 \lstset{ %
   language=Ruby,                % the language of the code
@@ -58,10 +59,10 @@ The resulting plug-ins provide decentralized user roles management, access restr
 \renewcommand\lstlistlistingname{Ukázky kódu}
 \def\appendixautorefname{Příloha}
 
-\widowpenalty=500
-\clubpenalty=500
+\widowpenalty=10000
+\clubpenalty=10000
 
-\hyphenation{Chili-Project Red-mine}
+\hyphenation{Chili-Project Red-mine Active-Record}
 
 \begin{document}
 
@@ -257,8 +258,7 @@ Požadované vlastnosti jsou tyto:
 Výsledný systém by měl tyto požadavky splňovat, případně by měl nabízet
 adekvátní alternativu nebo by chybějící funkce mělo být možné doplnit.
 
-Redmine sice tyto funkce splňuje, některé z~nich mají však určité
-nedostatky.
+Redmine tyto funkce splňuje, některé z~nich mají však určité nedostatky.
 
 Největší problém představuje \uv{globálnost} -- role a skupiny může definovat
 pouze administrátor. Pokud je v~systému větší množství projektů
@@ -325,7 +325,7 @@ posuzovaná aplikace musí splňovat.
   chyby.
 \item[Samostatně hostovaná]
   Software musí být možné provozovat v~rámci
-  infrastruktury fakulty, nemůže se jednat o~\gls{SaaS} řešení.
+  fakultní infrastruktury, nemůže se jednat o~\gls{SaaS} řešení.
 \item[Open~source]
   Aplikaci je možné modifikovat a kompletní zdrojový kód
   je možné zveřejnit.
@@ -433,14 +433,13 @@ funkce jsou řešeny jako nezávislé moduly.
 Tato aplikace nemá součásti pro podporu vývoje software, spíše nabízí
 řešení pro obecnou spolupráci a komunikaci v~týmu. Přestože autoři
 nabízí hostované řešení, zdrojový kód je dostupný pod licencí \gls{AGPL}
-verze 3\footnote{\url{https://github.com/teambox/teambox}}. Teambox je
+verze 3.\footnote{\url{https://github.com/teambox/teambox}} Teambox je
 postavený na Ruby on Rails 3.0.
 
 Funkce Teamboxu se točí kolem komunikace mezi spolupracovníky; z~diskuzí
 lze vytvořit úkoly a dlouhodobé informace je možné zaznamenat na
 \emph{stránkách} (Pages), které však mají ke klasické wiki poměrně
-daleko\footnote{Tato funkce je inspirovaná aplikací
-  \href{http://backpackit.com/}{Backpack}}.
+daleko.\footnote{Tato funkce je inspirovaná aplikací Backpack -- \url{http://backpackit.com/}}
 
 Teambox je zpočátku velice jednoduchý a přehledný.
 S~rostoucími nároky týmu a s~velkým množstvím projektů se situace však rychle mění.
@@ -450,7 +449,7 @@ kódu. Pages není možné hierarchicky třídit a správa oprávnění je velic
 omezená.
 
 Pro malé týmy a nesoftwarové projekty však Teambox představuje výborné řešení a
-v~současné době se začíná prosazovat i na \glslink{FIT}{FIT}\footnote{\url{http://teambox.fit.cvut.cz/}}.
+v~současné době se začíná prosazovat i na \glslink{FIT}{FIT}.\footnote{\url{http://teambox.fit.cvut.cz/}}
 
 \section[Open Atrium]{Open Atrium\footnote{\url{http://openatrium.com/}}}
 
@@ -473,12 +472,14 @@ jednotlivé moduly jsou izolované a obtížně propojitelné; například není
 možné se odkazovat z~wiki na konkrétní úkol a naopak. Jsou k~dispozici
 rozšíření pro Drupal, která tyto problémy řeší. Stejně tak je možná i
 integrace procházení repozitáře. Ne všechna rozšíření jsou však
-kompatibilní s~Open Atriem a některá se mohou i vzájemně
+kompatibilní se~systémem Open~Atrium, některá se mohou i vzájemně
 ovlivňovat.
 
-Teoreticky neexistuje nic, co by se na platformě Drupal / Open Atrium nedalo
+Teoreticky neexistuje nic, co by se na platformě Drupal~/~Open~Atrium nedalo
 postavit. Komplexnost a jistá křehkost celé platformy však činí tento
 systém poměrně neatraktivní.
+
+\newpage
 
 \section[mtrack]{mtrack\footnote{\url{http://mtrack.wezfurlong.org/}}}
 
@@ -492,7 +493,7 @@ tracker sdílejí jediný prostor. Sympatická je správa repozitáře kódu,
 na rozdíl od systému Trac je možné přidávat nové repozitáře přes webové
 rozhraní a výchozí instalace podporuje, kromě Subversion, také Git a
 Mercurial. Wiki je také uložená v~repozitáři, což lze využít k~přímé
-editaci dokumentů bez potřeby webového rozhraní.
+editaci dokumentů bez potřeby webového~rozhraní.
 
 V~ostatních ohledech se aplikace chová stejně jako Trac, rozdíly jsou
 spíše kosmetického charakteru.
@@ -500,19 +501,20 @@ spíše kosmetického charakteru.
 Aplikace mtrack má před sebou ještě dlouhou cestu, aby se stala plnohodnotným
 řešením, přesto je zde znát jistý potenciál. Pokud se do vývoje zapojí
 širší komunita, mohlo by se brzy jednat o~velice atraktivní volbu
-v~rámci PHP aplikací.
+v~rámci PHP~aplikací.
 
 \section[ChiliProject]{ChiliProject\footnote{\url{https://www.chiliproject.org/}}}
 
 ChiliProject vznikl jako \gls{fork} Redmine
 \citep{ChiliProjectWhyFork}. Některé důvody pro odštěpení od Redmine
-byly nesystematičnost a uzavřenost vývoje. ChiliProject se proto snaží
+byly nesystematičnost a uzavřenost vývoje původního systému.
+ChiliProject se proto snaží
 být otevřenější (z~hlediska přístupnosti přispěvatelům) a stabilnější
 alternativou k~Redmine.
 
 Ačkoliv na první pohled vypadá ChiliProject odlišně, jedná se skutečně
 o~pouhé kosmetické rozdíly. Po funkční stránce jsou systémy srovnatelné -- občas
-si koneckonců i vyměňují kód. ChiliProject existuje teprve přes
+si i koneckonců vyměňují kód. ChiliProject existuje teprve přes
 rok, což je v~případě zavedeného a rozsáhlého projektu krátká doba pro
 vznik zásadních změn. Je však zřejmé, že oba projekty směřují jiným
 směrem; Redmine stále \uv{nabaluje} další funkce a opravy, zatímco
@@ -540,7 +542,7 @@ je u~obou systémů -- až na změny v~nejnovějších verzích -- stejná,
 migrace z~Redmine tak nepředstavuje žádný problém. Jak jsem již zmínil,
 oba systémy se od sebe liší hlavně svým směřováním, ačkoliv
 ChiliProjectu chybí jedna z~požadovaných funkcí
-(\autoref{sec:private_issues_exist}). Nové verze Redmine vychází
+(viz \ref{sec:private_issues_exist}). Nové verze Redmine vychází
 \uv{až když jsou hotové.} ChiliProject má pevně vymezený časový rámec
 -- \emph{minor} verze, která je zpětně kompatibilní,
 vychází každý měsíc. \emph{Major} verze, která může zahrnovat rozsáhlejší změny,
@@ -579,9 +581,9 @@ Smalltalk a syntaxí jazyka Perl \citep{Stewart2001} -- ačkoliv podle
 autora Ruby, Yukihiro \uv{Matz} Matsumoto, podobu jazyka ovlivnil i editor
 Emacs \citep{Matsumoto2012}.
 
-V~oblasti současných dynamických programovacích jazyků představuje Ruby do jisté
-míry extrém. Prakticky jakoukoliv vlastnost programu je možné zkoumat
-a měnit \uv{za běhu}, se všemi pozitivy i negativy, která z~toho vyplývají.
+Mezi současnými dynamickými programovacími jazyky je Ruby do jisté
+míry extrémem. Prakticky jakoukoliv vlastnost programu je možné zkoumat
+a měnit \uv{za běhu,} se všemi pozitivy i negativy, která z~toho vyplývají.
 Zpravidla to bývá využíváno k~metaprogramování \citep[3c]{why2008}.
 Framework Rails využívá metaprogramování mj. v~podobě maker, která se
 hojně využívají u~modelů, např. pro validaci atributů a definici
@@ -654,14 +656,14 @@ odštěpení od originální aplikace.
 
 Framework Rails má zajisté velký podíl na popularizaci jazyka Ruby i
 architektury Model--view--controller (MVC) pro webové aplikace. Jak
-poukazuje \citep{Krzywda2011}, ve skutečnosti má MVC v~pojetí Rails
+poukazuje Krzywda \citep{Krzywda2011}, ve skutečnosti má MVC v~pojetí Rails
 blíže k~paradigmatu Model 2, který vznikl s~ohledem na specifika
 webových aplikací \citep{McCallister2004}. Označení MVC používá řada
-webových frameworků inspirovaných Rails (zejména v~PHP), nicméně
-rozlišení oproti architektuře Model 2 (někdy se hovoří o~\emph{MVC2}) a
+webových frameworků inspirovaných Rails, nicméně
+rozlišení oproti architektuře Model~2 (někdy se hovoří o~\emph{MVC2}) a
 klasickému MVC nabývá na významu s~popularizací klientských frameworků
 (jako například Backbone.js nebo Ember.js), které mají k~původnímu
-návrhu MVC blíže.
+návrhu MVC~blíže.
 
 Ruby on Rails, jakožto \uv{opinionated} framework \citep[kpt. 4, Make
 Opinionated Software]{Fried2009}
@@ -700,8 +702,8 @@ v~budoucích verzích.
 
 Pro objektově relační mapování (ORM) používá Rails knihovnu
 ActiveRecord, která implementuje stejnojmenný návrhový vzor \citep[str.
-160]{Fowler2003}. Důsledkem je, že jak perzistence, tak doménová logika
-aplikace je součástí modelů. ActiveRecord v~Rails, v~souladu
+160]{Fowler2003}. Důsledkem je, že model zajišťuje jak perzistenci, tak doménovou logiku
+aplikace. ActiveRecord v~Rails, v~souladu
 s~paradigmatem \uv{convention over configuration} však předpokládá, že
 databáze bude splňovat specifické konvence pojmenování tabulek a
 sloupců. Tím pádem není ve většině případů nutné řešit mapování mezi
@@ -763,19 +765,19 @@ upravovat existující metody (viz
 \ref{sec:vlastnosti-ruby}) a
 nahrazovat výchozí pohledy -- zde však samozřejmě nastává problém, pokud
 více rozšíření potřebuje nahradit stejný pohled. Proto má ChiliProject
-systém zpětných volání, tzv. hooks\footnote{\url{http://www.redmine.org/projects/redmine/wiki/Hooks}}.
+systém zpětných volání, tzv. hooks.\footnote{\url{http://www.redmine.org/projects/redmine/wiki/Hooks}}
 Ty se většinou volají z~pohledů, ale v~ojedinělých případech jsou
 použity i v~controlleru či v~modelu.
 
 Vedle toho mají rozšíření k~dispozici standardní mechanismy zpětných volání.
 Například filtry v~controlleru, které se
-zavolají před provedením akce\footnote{Eventuálně po provedení či v~obou
+zavolají před provedením akce.\footnote{Eventuálně po provedení či v~obou
   případech,
-  \url{http://apidock.com/rails/v2.3.8/ActionController/Filters/ClassMethods}}. Ty se
+  \url{http://apidock.com/rails/v2.3.8/ActionController/Filters/ClassMethods}} Ty se
 často používají pro autorizaci přístupu a k~načtení dat pro
 pohled. Obdobný systém existuje i pro modely, rozšíření se může nechat
 zavolat například po vytvoření nového záznamu, uložení změn či před
-validací\footnote{\url{http://apidock.com/rails/v2.3.8/ActiveRecord/Callbacks}}.
+validací.\footnote{\url{http://apidock.com/rails/v2.3.8/ActiveRecord/Callbacks}}
 
 Celkově je na systému rozšíření pro ChiliProject zajímavé, jak málo
 funkcí řeší samotná aplikace. Většinu potřeb rozšíření obstará samotné
@@ -866,7 +868,6 @@ class UserTest < ActiveSupport::TestCase
       assert @user.allowed_to?(:anything)
     end
   end
-
 end
 \end{lstlisting}
 
@@ -924,9 +925,9 @@ funkce je obtížné vzájemně odlišit a vyextrahovat v~případě, že by byl
 zapotřebí pouze jejich část. Výhodou je naopak potenciálně \uv{čistší}
 implementace změn s~menší duplikací kódu.
 
-Naproti tomu rozšíření se vždy nasazují na oficiální verzi aplikace.
-Každé z~nich představuje ohraničenou sadu funkcí, snadno přenositelné a
-snadno odstranitelné. To má i velkou výhodu pro udržitelnost --
+Naproti tomu rozšíření se dají nasadit na oficiální verzi aplikace.
+Každé z~nich představuje ohraničenou sadu funkcí, snadno přenositelnou a
+snadno odstra\-nitelnou. To má i velkou výhodu pro udržitelnost --
 individuální rozšíření je velice přístupné pro externí přispěvatele,
 kteří mohou objevit chyby a doplnit další funkce. Fork upravený pro
 potřeby konkrétní organizace je interní řešení, za jehož osud zcela
@@ -989,14 +990,13 @@ střídmé a narazil jsem na problémy s~provozováním testů pod Ruby 1.9.3
 
 Prvním krokem tedy bylo \uv{otestovat testovací prostředí} a zajistit
 jeho stabilitu. Po vzoru metodiky \gls{TDD} je tak možné psát testy
-současně s~funkčním kódem. Zároveň je v~průběhu vývoje možné využívat
-\gls{CI}.
+současně s~funkčním kódem. Zároveň lze v~průběhu vývoje využívat \gls{CI}.
 
 Protože veškerý kód v~této práci je pod open~source licencemi,
 je od začátku hostovaný ve veřejných repozitářích na serveru GitHub.
 Není to pouze otázka osobní preference, existuje řada nezávislých služeb,
 které nabízí projektům na GitHubu užitečné funkce navíc. Konkrétně
-v~tomto případě jsem se rozhodl využít službu Travis-CI\footnote{\url{http://travis-ci.org/}},
+v~tomto případě jsem se rozhodl využít službu Travis-CI,\footnote{\url{http://travis-ci.org/}}
 která poskytuje hostované řešení \gls{CI} pro open~source projekty zcela zdarma.
 
 Travis-CI funguje následovně: ze serveru GitHub dostane oznámení, že v~cílovém
@@ -1044,8 +1044,7 @@ konfigurovatelný pro další rozšíření. Kostrou tohoto řešení je rozší
 \lstinline!chiliproject_test_plugin! které posloužilo jako prototyp
 k~odladění.
 
-Při prvních testech reálných rozšíření jsem však narazil na záhadný
-problém.
+Při testech reálných rozšíření jsem však narazil na nepříjemný~problém.
 
 \section{Oprava Engines}
 \label{sec:oprava-engines}
@@ -1069,10 +1068,10 @@ načtení souboru) pak způsobí pád testů.
 
 Oprava této chyby byla poměrně banální, největším problémem bylo ji
 nalézt a otestovat -- testy Engines jsou pod Ruby 1.9 zcela nefunkční.
-Výsledkem je opravený \gls{fork} modulu \lstinline!engines!, který jsem
+Výsledkem je opravená verze modulu \lstinline!engines!, kterou jsem
 zahrnul do distribuce \emph{chiliproject-fit}. Problém byl
-nahlášený vývojářům ChiliProject, bohužel oprava dosud nebyla zahrnuta
-do oficiální verze\footnote{\url{https://www.chiliproject.org/issues/952}}.
+nahlášený vývojářům ChiliProject, bohužel oprava dosud nebyla přenesena
+do oficiální verze.\footnote{\url{https://www.chiliproject.org/issues/952}}
 
 S~funkčním testovacím prostředí už bylo možné začít implementovat
 jednotlivá rozšíření.
@@ -1088,9 +1087,10 @@ tak, aby se jejich vytváření a modifikace obešla bez zásahu
 administrátora. Jako nejvhodnější možnost se nabízí navázání skupin na
 projekt, kde už s~nimi bude moct pracovat správce projektu.
 
-Správce projektu s~oprávněním pro modifikaci projektových skupin může:
+\vspace{3mm}
 
-\begin{enumerate}[1.]
+Správce projektu s~oprávněním pro modifikaci projektových skupin může:
+\begin{enumerate}
 \item
   Vytvořit novou či smazat existující projektovou skupinu,
 \item
@@ -1098,9 +1098,11 @@ Správce projektu s~oprávněním pro modifikaci projektových skupin může:
 \item
   změnit název skupiny
 \end{enumerate}
+\newpage
+
 Správce projektu s~oprávněním pro správu členů projektu může:
 
-\begin{enumerate}[1.]
+\begin{enumerate}
 \setcounter{enumi}{3}
 \item
   Přiřadit skupině roli v~projektu; příslušnou roli dostanou všichni
@@ -1108,7 +1110,7 @@ Správce projektu s~oprávněním pro správu členů projektu může:
 \end{enumerate}
 Projektové skupiny jsou k~dispozici všem podprojektům (lze jim přiřadit
 roli -- požadavek 4), nelze je ale v~rámci podprojektu modifikovat
-(požadavky 1 až 3).
+(požadavky 1~až~3).
 
 Nadále bude možné používat i standardní funkci globálních skupin, které
 jsou k~dispozici všem projektům a může je modifikovat pouze
@@ -1116,7 +1118,7 @@ administrátor.
 
 \subsection{Existující řešení}
 
-Některé z~požadavků částečně splňuje rozšíření Group Assignee\footnote{\url{http://www.redmine.org/plugins/groupsassignee}},
+Některé z~požadavků částečně splňuje rozšíření Group Assignee,\footnote{\url{http://www.redmine.org/plugins/groupsassignee}}
 které umožňuje přiřadit skupině zodpovědné osoby, jenž mohou přiřazovat a
 odebírat členy. Ačkoli to částečně řeší decentralizaci správy, stále je
 nutné, aby administrátor skupiny nadefinoval. Navíc všechny skupiny stále
@@ -1204,7 +1206,7 @@ definici, proto bude asociace definovaná v~rozšíření brána v~potaz.
 
 Větší problém je s~validátory, které se řetězí -- vícenásobná definice
 validace na stejný atribut pouze přidá další \gls{callback} na konec
-seznamu validací. To však vadí, pokud chceme z~rozšíření nastavit méně
+seznamu validací. To~však vadí, pokud chceme z~rozšíření nastavit méně
 přísné podmínky platnosti záznamu -- v~tomto případě se jedná
 o~unikátnost názvu skupiny. Standardně musí mít každá skupina unikátní
 název; u~projektové skupiny však stačí, aby její název byl unikátní pouze v~rámci daného
@@ -1336,7 +1338,7 @@ konečné chování rozšíření.
 Pouze jedna chyba se projevila až při nasazení na produkční server:
 administrace globálních skupin fungovala do té doby, než uživatel jednou
 otevřel správu projektových skupin. Systém se v~administraci globálních
-skupin nepokoušel načíst z~databáze projektové skupiny, pokud jejich
+skupin \mbox{nepokoušel} načíst z~databáze projektové skupiny, pokud jejich
 třída nebyla předtím použita. To je důsledek cachování tříd, ovšem tato funkce je
 ve vývojovém režimu Rails vypnutá, aby nebylo nutné restartovat
 aplikační server při každé změně kódu\footnote{Novější verze Rails navíc
@@ -1362,9 +1364,13 @@ správcům projektů více možností a více decentralizovat správu. Toto
 rozšíření však může mít mnohem větší dopad na práci se systémem
 ChiliProject.
 
+\vspace{3mm}
+
 Uživatel s~oprávněním pro modifikaci projektových rolí může:
 
-\begin{enumerate}[1.]
+\vspace{-3mm}
+
+\begin{enumerate}
 \item
   Vytvářet či mazat projektové role (v~kontextu daného projektu),
 \item
@@ -1381,16 +1387,20 @@ S~funkcemi rolí je úzce spjatý systém \gls{workflow} -- pokud by tato
 funkce nebyla zahrnuta, projektové role by mohly používat
 issue tracker pouze omezeně.
 
+\vspace{3mm}
+
 Uživatel s~oprávněním pro modifikaci projektového \gls{workflow} může:
 
-\begin{enumerate}[1.]
+\vspace{3mm}
+
+\begin{enumerate}
 \setcounter{enumi}{3}
 \item
   Měnit a kopírovat workflow pro projektové role.
 \end{enumerate}
 \subsection{Existující řešení}
 
-Část požadovaných funkcí nabízí rozšíření Role Shift\footnote{\url{http://projects.andriylesyuk.com/projects/role-shift}},
+Část požadovaných funkcí nabízí rozšíření Role Shift,\footnote{\url{http://projects.andriylesyuk.com/projects/role-shift}}
 které funguje na principu \emph{posunu} role -- jedna role se tak
 v~určitém projektu může chovat jako jiná. Ačkoli to nezní moc užitečně,
 částečně to řeší požadavek 3, protože je tím možné předefinovat i vestavěné
@@ -1411,7 +1421,7 @@ projektů, nebo \lstinline!nil!) a volbu, zda se má kontrolovat globální
 kontext -- ten se používá například u~vytváření nových projektů, které
 nemají rodiče, tj. tam, kde nelze vyjít z~kontextu existujícího
 projektu. Pro ověření autorizace se projdou všechny role, které daný
-uživatel má v~daném kontextu -- projektu (či v~projektech). Pokud se
+uživatel má v~daném kontextu -- projektu (či~v~projektech). Pokud se
 u~nějaké role najde hledané oprávnění, je autorizace úspěšná.
 
 \subsubsection{Model projektových rolí}
@@ -1805,9 +1815,9 @@ Modifikace uvedené v~této práci představují pouhý zlomek funkcí, které m
 \item[Request Tracker] \url{http://bestpractical.com/rt/}
 \item[OTRS Help Desk] \url{http://www.otrs.com/en/products/otrs-help-desk/}
 \item[Roundup] \url{http://www.roundup-tracker.org/}
-\item[LibreSource] \url{http://dev.libresource.org/ (Kompletní groupware včetně integrace s~Jabberem -> overkill?)}
-\item[PHProjekt] \url{http://www.phprojekt.com/ (sami používají JIRA+Confluence)}
-\item[TeamLab] \url{http://www.teamlab.com/ (GPLv3 – http://sourceforge.net/projects/teamlab/)}
+\item[LibreSource] \url{http://dev.libresource.org/}
+\item[PHProjekt] \url{http://www.phprojekt.com/}
+\item[TeamLab] \url{http://www.teamlab.com/}
 \item[Retrospectiva] \url{https://github.com/dim/retrospectiva}
 \item[Plancake] \url{http://www.plancake.com/}
 \item[Project HQ] \url{http://projecthq.org/}
