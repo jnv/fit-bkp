@@ -568,7 +568,7 @@ formu výsledné práce.
 
 \section{Vlastnosti platformy}
 
-ChiliProject je napsaný v jazyce Ruby s použitím frameworku
+ChiliProject je napsaný v~jazyce Ruby s~použitím frameworku
 Ruby on Rails.
 
 Samotný jazyk Ruby má řadu specifických vlastností, které značně
@@ -631,7 +631,7 @@ Původní třídu rozšíříme o~tento modul:
 \end{lstlisting}
 Pro redefinici existujících metod z~modulu je vhodné použít makro \\
 \lstinline!alias_method_chain! z~knihovny
-ActiveSupport (z frameworku Rails).
+ActiveSupport (z~frameworku Rails).
 
 \begin{lstlisting}
 module ExamplePatch
@@ -955,11 +955,11 @@ tak i v~případě \acrfull{REE} \citep[End of Life]{REEEOL}, což je modifikova
 \gls{MRI} řady 1.8, která by měla poskytovat vyšší výkon pro serverové aplikace
 (a oproti oficiální verzi \gls{MRI} 1.8 se jí to skutečně daří).
 
-Čísla verzí jsou u \gls{MRI} velice zavádějící, aplikace napsané
-pro \gls{MRI} verze 1.9.2 mohou mít problémy s verzí 1.9.3.
+Čísla verzí jsou u~\gls{MRI} velice zavádějící, aplikace napsané
+pro \gls{MRI} verze 1.9.2 mohou mít problémy s~verzí 1.9.3.
 ChiliProject používá mnoho knihoven, ktré byly cílené na \gls{MRI} řady
-1.8 a v současnosti už se nevyvíjí. Přitom se problémy s kompatibilitou
-poměrně obtížně analyzují, většinou jsou důsledkem drobné změny v chování interpreta.
+1.8 a v~současnosti už se nevyvíjí. Přitom se problémy s~kompatibilitou
+poměrně obtížně analyzují, většinou jsou důsledkem drobné změny v~chování interpreta.
 
 Cílová verze frameworku Rails je určená aplikací ChiliProject -- ta používá
 poslední verzi Rails řady 2 (2.3.14), která už není oficiálně podporovaná.
@@ -1405,13 +1405,16 @@ issue tracker pouze omezeně.
 
 Uživatel s~oprávněním pro modifikaci projektového \gls{workflow} může:
 
-\vspace{3mm}
+\vspace{-3mm}
 
 \begin{enumerate}
 \setcounter{enumi}{3}
 \item
   Měnit a kopírovat workflow pro projektové role.
 \end{enumerate}
+
+\newpage
+
 \subsection{Existující řešení}
 
 Část požadovaných funkcí nabízí rozšíření Role Shift,\footnote{\url{http://projects.andriylesyuk.com/projects/role-shift}}
@@ -1791,7 +1794,7 @@ by se tak smazala hranice mezi lokální databází a externími zdroji.
 
 Alternativou by bylo dále rozvíjet systém přidávání uživatelů,
 který by umožnil vyhledávání a hromadný import uživatelů na základě
-určitých kritérií -- například uživatelské skupiny v \gls{LDAP}.
+určitých kritérií -- například uživatelské skupiny v~\gls{LDAP}.
 
 Jako minimální implementace však může sloužit toto rozšíření už nyní.
 
